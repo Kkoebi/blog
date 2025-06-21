@@ -100,6 +100,68 @@ nav a:hover {
     color: #555;
   }
 
+  /* 漢堡按鈕 */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  z-index: 101;
+  transition: 0.3s ease;
+}
+
+.hamburger div {
+  width: 24px;
+  height: 2px;
+  background: #333;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+/* 漢堡按鈕變X動畫 */
+.hamburger.active div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active div:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* 手機版選單 */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 60px; /* 跟nav高度一致 */
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 0;
+  z-index: 99;
+}
+
+.mobile-menu.active {
+  display: flex;
+}
+
+/* 手機 RWD */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+
   @media (max-width: 768px) {
   nav {
     gap: 16px;
@@ -138,11 +200,30 @@ nav a:hover {
 </head>
 <body>
 
-<nav>
+<nav id="navbar">
+  <div style="font-weight: 600; color: inherit;">XML's Blog</div>
+  <div class="nav-links">
+    <a href="#about">關於我</a>
+    <a href="#projects">作品集</a>
+    <a href="#contact">聯絡我</a>
+  </div>
+
+  <!-- 漢堡按鈕 -->
+  <div class="hamburger" id="hamburger" aria-label="切換選單" role="button" tabindex="0">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</nav>
+
+<!-- 手機選單 -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <a href="#about">關於我</a>
   <a href="#projects">作品集</a>
   <a href="#contact">聯絡我</a>
-</nav>
+</div>
+
+
 
 <section class="hero" id="hero">
   <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80" class="clean" />
@@ -187,6 +268,22 @@ nav a:hover {
       nav.classList.remove("scrolled");
     }
   });
+  hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');      // 漢堡變 X
+  mobileMenu.classList.toggle('active');     // 選單顯示/隱藏
+  // aria 狀態同步（無障礙）
+  const expanded = hamburger.classList.contains('active');
+  mobileMenu.setAttribute('aria-hidden', !expanded);
+});
+
+// 點選選單連結自動關閉（手機版體驗佳）
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    hamburger.classList.remove('active');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  });
+});
 </script>
 
 </body>
