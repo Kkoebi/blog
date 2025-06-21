@@ -16,22 +16,32 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   height: 60px;
-  background: rgba(255, 255, 255, 0.4); /* 更輕盈透明 */
+  background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 40px;
+  justify-content: space-between;
+  padding: 0 20px;
   font-weight: 500;
   z-index: 100;
   transition: background 0.5s ease, box-shadow 0.5s ease;
   font-family: 'Noto Sans TC', 'Yu Gothic UI', sans-serif;
 }
 
+/* logo 置中 */
+nav > div.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 600;
+  color: inherit;
+  pointer-events: none; /* 點不到 */
+}
+
 nav.scrolled {
   background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05); /* 柔和陰影 */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
 nav a {
@@ -44,7 +54,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #a384bd; /* 柔紫 */
+  color: #a384bd;
   border-bottom: 2px solid #a384bd;
 }
 
@@ -53,8 +63,8 @@ nav a:hover {
   height: 100vh;
   overflow: hidden;
   display: flex;
-  justify-content: center; /* 水平置中 */
-  align-items: center;     /* 垂直置中 ←←← 關鍵！ */
+  justify-content: center;
+  align-items: center;
 }
 
   .hero img {
@@ -100,7 +110,7 @@ nav a:hover {
     color: #555;
   }
 
-  /* 漢堡按鈕 */
+/* 漢堡按鈕 */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -133,26 +143,29 @@ nav a:hover {
 
 /* 手機版選單 */
 .mobile-menu {
-  display: none;
+  display: flex;
   position: fixed;
-  top: 60px; /* 跟nav高度一致 */
-  left: 0;
-  width: 100%;
+  top: 60px; /* nav 高度 */
+  left: -250px; /* 藏左側外面 */
+  width: 250px;
+  height: 100vh;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  padding: 30px 20px;
   gap: 20px;
-  padding: 30px 0;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  transition: left 0.3s ease;
   z-index: 99;
 }
 
 .mobile-menu.active {
-  display: flex;
+  left: 0;
 }
 
-/* 手機 RWD */
+/* RWD */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -162,7 +175,8 @@ nav a:hover {
   }
 }
 
-  @media (max-width: 768px) {
+/* RWD 字體微調 */
+@media (max-width: 768px) {
   nav {
     gap: 16px;
     font-size: 0.95rem;
@@ -201,29 +215,26 @@ nav a:hover {
 <body>
 
 <nav id="navbar">
-  <div style="font-weight: 600; color: inherit;">XML's Blog</div>
-  <div class="nav-links">
-    <a href="#about">關於我</a>
-    <a href="#projects">作品集</a>
-    <a href="#contact">聯絡我</a>
-  </div>
-
-  <!-- 漢堡按鈕 -->
   <div class="hamburger" id="hamburger" aria-label="切換選單" role="button" tabindex="0">
     <div></div>
     <div></div>
     <div></div>
   </div>
+
+  <div class="logo">XML's Blog</div>
+
+  <div class="nav-links">
+    <a href="#about">關於我</a>
+    <a href="#projects">作品集</a>
+    <a href="#contact">聯絡我</a>
+  </div>
 </nav>
 
-<!-- 手機選單 -->
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <a href="#about">關於我</a>
   <a href="#projects">作品集</a>
   <a href="#contact">聯絡我</a>
 </div>
-
-
 
 <section class="hero" id="hero">
   <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80" class="clean" />
@@ -251,39 +262,40 @@ nav a:hover {
 
 <script>
   const blurImg = document.getElementById('blurImg');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const nav = document.querySelector("nav");
+
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     const maxBlur = 4;
     const speed = 60;
     const blur = Math.min(scrollY / speed, maxBlur);
     blurImg.style.filter = `blur(${blur}px)`;
-  });
 
-  const nav = document.querySelector("nav");
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
+    if (scrollY > 50) {
       nav.classList.add("scrolled");
     } else {
       nav.classList.remove("scrolled");
     }
   });
-  hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');      // 漢堡變 X
-  mobileMenu.classList.toggle('active');     // 選單顯示/隱藏
-  // aria 狀態同步（無障礙）
-  const expanded = hamburger.classList.contains('active');
-  mobileMenu.setAttribute('aria-hidden', !expanded);
-});
 
-// 點選選單連結自動關閉（手機版體驗佳）
-document.querySelectorAll('.mobile-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
-    hamburger.classList.remove('active');
-    mobileMenu.setAttribute('aria-hidden', 'true');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');      // 漢堡變 X
+    mobileMenu.classList.toggle('active');     // 選單顯示/隱藏
+    // aria 狀態同步（無障礙）
+    const expanded = hamburger.classList.contains('active');
+    mobileMenu.setAttribute('aria-hidden', !expanded);
   });
-});
+
+  // 點選選單連結自動關閉（手機版體驗佳）
+  document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      hamburger.classList.remove('active');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    });
+  });
 </script>
 
 </body>
