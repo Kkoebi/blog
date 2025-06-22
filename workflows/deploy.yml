@@ -19,10 +19,13 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
+      - name: Disable Jekyll
+        run: echo "" > .nojekyll
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: . # 你的 index.html 放在根目錄，就用 .
+          path: .  # 假設你的 index.html 就在根目錄
 
       - name: Deploy
         uses: actions/deploy-pages@v2
