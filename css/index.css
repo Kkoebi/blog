@@ -321,21 +321,50 @@ p {
 }
 
 @media (max-width: 768px) {
+  #timeline-section {
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start; /* 靠左排列 */
+  }
+
+  .timeline {
+    width: 4px;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin: 0 20px;
+  }
+
   .dialog_wrapper {
-    height: auto; /* 高度自動 */
-    margin-left: 20px; /* 避免貼邊 */
-    margin-right: 20px;
+    height: auto;
+    width: 100%;
+    margin: 20px 0;
+    position: relative;
   }
 
   .dialog {
-    position: static; /* 取消 absolute 讓他自動排列 */
-    margin-top: 20px;
+    position: static; /* 不浮動，正常排列 */
+    margin-top: 10px;
+    width: 100%;
+    max-width: 100%;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    width: 100%; /* 撐滿寬度 */
-    max-width: 100%; /* 防止超出 */
   }
 
   .dialog::before {
-    display: none; /* 移除小菱形，避免跑版 */
+    display: none; /* 拿掉小菱形箭頭 */
+  }
+
+  .dialog_wrapper:before {
+    left: -10px; /* 時間點小圓點靠近線 */
+    transform: translateX(0);
+  }
+
+  .dialog_wrapper:nth-child(2n),
+  .dialog_wrapper:nth-child(2n+1) {
+    transform-origin: initial;
+  }
+
+  .dialog_wrapper:nth-child(2n) .dialog,
+  .dialog_wrapper:nth-child(2n+1) .dialog {
+    left: 0;
+    right: 0;
   }
 }
