@@ -5,7 +5,117 @@
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: #222;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
+  
+  #timeline-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0;
+  }
+
+  .timeline {
+    height: auto;
+    width: 6px;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding-top: 50px;
+  }
+
+  .dialog_wrapper {
+    height: 160px;
+    position: relative;
+    transform: translateY(0px);
+  }
+
+  .dialog_wrapper:before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: solid 5px white;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-40%);
+    position: absolute;
+  }
+
+  .dialog_wrapper:nth-child(2n+1) {
+    transform-origin: 0% 20px;
+  }
+  .dialog_wrapper:nth-child(2n+1) .dialog {
+    left: 40px;
+  }
+  .dialog_wrapper:nth-child(2n+1) .dialog:before {
+    left: -10px;
+  }
+
+  .dialog_wrapper:nth-child(2n) {
+    transform-origin: 100% 20px;
+  }
+  .dialog_wrapper:nth-child(2n) .dialog {
+    right: 40px;
+    left: initial;
+  }
+
+  .dialog {
+    background-color: #fff;
+    cursor: default;
+    border-radius: 5px;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.4);
+    width: 250px;
+    transition: 0.5s;
+    position: absolute;
+    left: 0;
+    top: -10px;
+  }
+
+  .dialog:before {
+    content: "";
+    margin: 4px ;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    position: absolute;
+    right: -10px;
+    background-color: white;
+    transform: rotate(45deg);
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.4);
+  }
+
+.content-box {
+    height: 160px;
+    box-sizing: border-box; /* 包含padding在內 */
+    /* 其他保持不變 */
+    position: relative;
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px 20px;
+    z-index: 5;
+}
+
+
+  .year {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    position: relative;
+  }
+
+  @keyframes rain_in {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
 
 nav {
     position: fixed;
@@ -145,7 +255,7 @@ p {
 .mobile-menu {
     display: flex;
     position: fixed;
-    top: 56px; /* nav 高度 */
+    top: 64px; /* nav 高度 */
     left: -250px; /* 藏左側外面 */
     width: 250px;
     height: 100vh;
