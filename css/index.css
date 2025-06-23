@@ -319,3 +319,23 @@ p {
         padding: 24px 16px;
     }
 }
+
+@media (max-width: 768px) {
+  .dialog_wrapper {
+    height: auto; /* 高度自動 */
+    margin-left: 20px; /* 避免貼邊 */
+    margin-right: 20px;
+  }
+
+  .dialog {
+    position: static; /* 取消 absolute 讓他自動排列 */
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    width: 100%; /* 撐滿寬度 */
+    max-width: 100%; /* 防止超出 */
+  }
+
+  .dialog::before {
+    display: none; /* 移除小菱形，避免跑版 */
+  }
+}
