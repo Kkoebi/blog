@@ -44,3 +44,52 @@ window.addEventListener('resize', () => {
         mobileMenu.setAttribute('aria-hidden', 'true');
     }
 });
+
+const canvas = document.getElementById('falling-lines-canvas');
+const ctx = canvas.getContext('2d');
+
+let width = window.innerWidth;
+let height = window.innerHeight;
+canvas.width = width;
+canvas.height = height;
+
+const lines = Array.from({ length: 80 }, () => ({
+  x: Math.random() * width,
+  y: Math.random() * height,
+  length: Math.random() * 80 + 20,
+  speed: Math.random() * 2 + 1,
+  opacity: Math.random() * 0.5 + 0.3,
+}));
+
+function draw() {
+  ctx.clearRect(0, 0, width, height);
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+  lines.forEach(line => {
+    ctx.beginPath();
+    ctx.strokeStyle = `rgba(255, 255, 255, ${line.opacity})`;
+    ctx.moveTo(line.x, line.y);
+    ctx.lineTo(line.x, line.y + line.length);
+    ctx.stroke();
+
+    line.y += line.speed;
+    line.opacity -= 0.002;
+
+    if (line.y > height || line.opacity <= 0) {
+      line.y = -line.length;
+      line.x = Math.random() * width;
+      line.length = Math.random() * 80 + 20;
+      line.speed = Math.random() * 2 + 1;
+      line.opacity = Math.random() * 0.5 + 0.3;
+    }
+  });
+  requestAnimationFrame(draw);
+}
+
+draw();
+
+window.addEventListener('resize', () => {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+});
