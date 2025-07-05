@@ -19,46 +19,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-<script>
-particlesJS('particles-js', {
-  "particles": {
-    "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-    "color": { "value": "#ffffff" },
-    "shape": { "type": "circle" },
-    "opacity": { "value": 0.4 },
-    "size": { "value": 2.5, "random": true },
-    "line_linked": {
-      "enable": true,
-      "distance": 130,
-      "color": "#ffffff",
-      "opacity": 0.3,
-      "width": 1
-    },
-    "move": {
-      "enable": true,
-      "speed": 1.5,
-      "direction": "none",
-      "out_mode": "out"
-    }
-  },
-  "interactivity": {
-    "events": {
-      "onhover": { "enable": true, "mode": "grab" },
-      "onclick": { "enable": true, "mode": "push" },
-      "resize": true
-    },
-    "modes": {
-      "grab": {
-        "distance": 200,
-        "line_linked": { "opacity": 0.5 }
-      },
-      "push": { "particles_nb": 2 }
-    }
-  },
-  "retina_detect": true
-});
-</script>
-
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');      // 漢堡變 X
     mobileMenu.classList.toggle('active');     // 選單顯示/隱藏
