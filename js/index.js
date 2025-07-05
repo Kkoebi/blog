@@ -46,8 +46,8 @@ window.addEventListener('resize', () => {
 });
 
 const container = document.querySelector('.line-container');
-const lineCount = window.innerWidth < 768 ? 15 : 30;
-
+const lineCount = window.innerWidth < 768 ? 7 : 30;
+const maxOpacity = 0.7;
 const lines = [];
 
 for (let i = 0; i < lineCount; i++) {
@@ -59,6 +59,8 @@ for (let i = 0; i < lineCount; i++) {
   span.style.fontSize = `${Math.random() * 16 + 10}px`;
   const initialRotate = Math.random() * 360;
   span.style.transform = `rotate(${initialRotate}deg)`;
+  const initialOpacity = Math.random() * maxOpacity;
+  span.style.color = `rgba(255, 255, 255, ${initialOpacity})`;
   span.style.animationDelay = `${Math.random() * 6}s`;
   container.appendChild(span);
 
