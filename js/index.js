@@ -53,8 +53,19 @@ function resizeCanvas() {
   canvas.height = window.innerHeight * window.devicePixelRatio;
   canvas.style.width = window.innerWidth + 'px';
   canvas.style.height = window.innerHeight + 'px';
-  ctx.setTransform(1, 0, 0, 1, 0, 0); // 重置轉換矩陣
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+  
+  width = window.innerWidth;
+  height = window.innerHeight;
+  
+  lines.forEach(line => {
+    line.x = Math.random() * width;
+    line.y = Math.random() * height;
+    line.length = Math.random() * 80 + 20;
+    line.speed = Math.random() * 2 + 1;
+    line.opacity = Math.random() * 0.5 + 0.3;
+  });
 }
 
 let width = window.innerWidth;
@@ -62,7 +73,7 @@ let height = window.innerHeight;
 
 resizeCanvas();
 
-const lines = Array.from({ length: 40 }, () => ({
+const lines = Array.from({ length: 25 }, () => ({
   x: Math.random() * width,
   y: Math.random() * height,
   length: Math.random() * 80 + 20,
@@ -70,7 +81,16 @@ const lines = Array.from({ length: 40 }, () => ({
   opacity: Math.random() * 0.5 + 0.3,
 }));
 
-function draw() {
+let lastFrameTime = 0;
+const frameInterval = 1000 / 30;
+
+function draw(currentTime) {
+  if (currentTime - lastFrameTime < frameInterval) {
+    requestAnimationFrame(draw);
+    return;
+  }
+  lastFrameTime = currentTime;
+
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   lines.forEach(line => {
     ctx.beginPath();
@@ -95,8 +115,4 @@ function draw() {
 
 draw();
 
-window.addEventListener('resize', () => {
-  width = window.innerWidth;
-  height = window.innerHeight;
-  resizeCanvas();
-});
+window.addEventListener('resize', resizeCanvas);
