@@ -11,16 +11,6 @@ body {
     line-height: 1.6;
 }
 
-#particles-js {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  pointer-events: none; /* 不擋點擊 */
-}
-
 nav {
     position: fixed;
     top: 0; left: 0; right: 0;
