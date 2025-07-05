@@ -45,14 +45,57 @@ window.addEventListener('resize', () => {
     }
 });
 
-const container = document.getElementById('lines-container');
-const lineCount = 50;
+// ===== Falling Lines Effect =====
+const canvas = document.getElementById('falling-lines-canvas');
+const ctx = canvas.getContext('2d');
 
-for(let i = 0; i < lineCount; i++) {
-  const line = document.createElement('div');
-  line.className = 'line';
-  line.style.left = Math.random() * 100 + 'vw';
-  line.style.animationDuration = (Math.random() * 3 + 2) + 's'; // 2~5秒
-  line.style.animationDelay = (Math.random() * 5) + 's'; // 隨機延遲
-  container.appendChild(line);
+let width = window.innerWidth;
+let height = window.innerHeight;
+canvas.width = width;
+canvas.height = height;
+
+const isMobile = window.innerWidth <= 768;
+
+let lines = Array.from({ length: isMobile ? 40 : 80 }, () => createLine());
+
+function createLine() {
+  return {
+    x: Math.random() * width,
+    y: Math.random() * height,
+    length: Math.random() * 80 + 20,
+    speed: (Math.random() * 2 + 1) * (isMobile ? 0.5 : 1),
+    opacity: Math.random() * 0.5 + 0.3
+  };
 }
+
+function draw() {
+  ctx.clearRect(0, 0, width, height);
+  lines.forEach(line => {
+    ctx.beginPath();
+    ctx.strokeStyle = `rgba(255, 255, 255, ${line.opacity})`;
+    ctx.moveTo(line.x, line.y);
+    ctx.lineTo(line.x, line.y + line.length);
+    ctx.stroke();
+
+    line.y += line.speed;
+    line.opacity -= 0.002;
+
+    if (line.y > height || line.opacity <= 0) {
+      Object.assign(line, createLine(), { y: -line.length });
+    }
+  });
+  requestAnimationFrame(draw);
+}
+
+draw();
+
+window.addEventListener('resize', () => {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+
+  // 更新 isMobile 狀態與重設線條
+  const isNowMobile = window.innerWidth <= 768;
+  lines = Array.from({ length: isNowMobile ? 40 : 80 }, () => createLine());
+});
