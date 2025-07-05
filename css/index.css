@@ -287,6 +287,32 @@ nav.scrolled .hamburger div {
   animation: float 6s ease-in-out infinite;
 }
 
+  .explosion-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 9999;
+  }
+  .explosion-box {
+  position: absolute;
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  opacity: 1;
+  animation: explodeFade 1.7s forwards;
+}
+  @keyframes explodeFade {
+    0% {
+      opacity: 1;
+      transform: scale(1) translate(0,0) rotate(0deg);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.5) translate(var(--dx), var(--dy)) rotate(var(--dr));
+    }
+  }
+
 @keyframes float {
   0% {
     transform: translate(0, 0) rotate(0deg);
