@@ -48,12 +48,21 @@ window.addEventListener('resize', () => {
 const canvas = document.getElementById('falling-lines-canvas');
 const ctx = canvas.getContext('2d');
 
+function resizeCanvas() {
+  canvas.width = window.innerWidth * window.devicePixelRatio;
+  canvas.height = window.innerHeight * window.devicePixelRatio;
+  canvas.style.width = window.innerWidth + 'px';
+  canvas.style.height = window.innerHeight + 'px';
+  ctx.setTransform(1, 0, 0, 1, 0, 0); // 重置轉換矩陣
+  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+}
+
 let width = window.innerWidth;
 let height = window.innerHeight;
-canvas.width = width;
-canvas.height = height;
 
-const lines = Array.from({ length: 80 }, () => ({
+resizeCanvas();
+
+const lines = Array.from({ length: 40 }, () => ({
   x: Math.random() * width,
   y: Math.random() * height,
   length: Math.random() * 80 + 20,
@@ -62,8 +71,7 @@ const lines = Array.from({ length: 80 }, () => ({
 }));
 
 function draw() {
-  ctx.clearRect(0, 0, width, height);
-  ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   lines.forEach(line => {
     ctx.beginPath();
     ctx.strokeStyle = `rgba(255, 255, 255, ${line.opacity})`;
@@ -90,6 +98,5 @@ draw();
 window.addEventListener('resize', () => {
   width = window.innerWidth;
   height = window.innerHeight;
-  canvas.width = width;
-  canvas.height = height;
+  resizeCanvas();
 });
