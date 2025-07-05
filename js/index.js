@@ -28,38 +28,36 @@ canvas.width = width;
 canvas.height = height;
 
 const snowflakes = [];
+const maxSnowflakes = 200; // 雪花上限
 
-function createSnowflake() {
+function createSnowflake(x = Math.random() * width, y = Math.random() * height) {
   return {
-    x: Math.random() * width,
-    y: Math.random() * height,
+    x: x,
+    y: y,
     radius: Math.random() * 3 + 1,
-    speedY: Math.random() * 1 + 0.5,
-    speedX: Math.random() * 0.5 - 0.25
+    speedY: Math.random() * 1.5 + 0.5,
+    speedX: Math.random() * 0.5 - 0.25,
+    alpha: Math.random() * 0.5 + 0.5
   };
 }
 
+// 初始雪花
 for (let i = 0; i < 150; i++) {
   snowflakes.push(createSnowflake());
 }
 
 function drawSnowflakes() {
   ctx.clearRect(0, 0, width, height);
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-  ctx.beginPath();
-
   snowflakes.forEach(flake => {
-    ctx.moveTo(flake.x, flake.y);
+    ctx.beginPath();
     ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 255, 255, ${flake.alpha})`;
+    ctx.fill();
   });
-
-  ctx.fill();
-  updateSnowflakes();
-  requestAnimationFrame(drawSnowflakes);
 }
 
 function updateSnowflakes() {
-  snowflakes.forEach(flake => {
+  snowflakes.forEach((flake, index) => {
     flake.y += flake.speedY;
     flake.x += flake.speedX;
 
@@ -74,7 +72,40 @@ function updateSnowflakes() {
   });
 }
 
-drawSnowflakes();
+function loop() {
+  drawSnowflakes();
+  updateSnowflakes();
+  requestAnimationFrame(loop);
+}
+
+loop();
+
+// 滑鼠產雪
+window.addEventListener('mousemove', e => {
+  for (let i = 0; i < 3; i++) {
+    snowflakes.push(createSnowflake(e.clientX, e.clientY));
+  }
+  if (snowflakes.length > maxSnowflakes) snowflakes.splice(0, snowflakes.length - maxSnowflakes);
+});
+
+// 觸控產雪
+window.addEventListener('touchmove', e => {
+  for (let i = 0; i < e.touches.length; i++) {
+    const touch = e.touches[i];
+    for (let j = 0; j < 3; j++) {
+      snowflakes.push(createSnowflake(touch.clientX, touch.clientY));
+    }
+  }
+  if (snowflakes.length > maxSnowflakes) snowflakes.splice(0, snowflakes.length - maxSnowflakes);
+});
+
+// 視窗縮放時調整 canvas 尺寸
+window.addEventListener('resize', () => {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+});
 
 // resize canvas when window resizes
 window.addEventListener('resize', () => {
