@@ -19,6 +19,71 @@ window.addEventListener('scroll', () => {
     }
 });
 
+const canvas = document.getElementById('snowCanvas');
+const ctx = canvas.getContext('2d');
+
+let width = window.innerWidth;
+let height = window.innerHeight;
+canvas.width = width;
+canvas.height = height;
+
+const snowflakes = [];
+
+function createSnowflake() {
+  return {
+    x: Math.random() * width,
+    y: Math.random() * height,
+    radius: Math.random() * 3 + 1,
+    speedY: Math.random() * 1 + 0.5,
+    speedX: Math.random() * 0.5 - 0.25
+  };
+}
+
+for (let i = 0; i < 150; i++) {
+  snowflakes.push(createSnowflake());
+}
+
+function drawSnowflakes() {
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+  ctx.beginPath();
+
+  snowflakes.forEach(flake => {
+    ctx.moveTo(flake.x, flake.y);
+    ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+  });
+
+  ctx.fill();
+  updateSnowflakes();
+  requestAnimationFrame(drawSnowflakes);
+}
+
+function updateSnowflakes() {
+  snowflakes.forEach(flake => {
+    flake.y += flake.speedY;
+    flake.x += flake.speedX;
+
+    if (flake.y > height) {
+      flake.y = -flake.radius;
+      flake.x = Math.random() * width;
+    }
+
+    if (flake.x > width || flake.x < 0) {
+      flake.x = Math.random() * width;
+    }
+  });
+}
+
+drawSnowflakes();
+
+// resize canvas when window resizes
+window.addEventListener('resize', () => {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+});
+
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');      // 漢堡變 X
     mobileMenu.classList.toggle('active');     // 選單顯示/隱藏

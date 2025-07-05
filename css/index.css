@@ -11,6 +11,16 @@ body {
     line-height: 1.6;
 }
 
+#snowCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* 比 nav 還低就不會遮住漢堡等 */
+}
+
 nav {
     position: fixed;
     top: 0; left: 0; right: 0;
