@@ -269,34 +269,15 @@ nav.scrolled .hamburger div {
     }
 }
 
-#lines-container {
+#falling-lines-canvas {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  pointer-events: none;
-  overflow: hidden;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
+  pointer-events: none;
 }
 
-.line {
-  position: absolute;
-  width: 2px;
-  height: 50px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.8));
-  animation-name: fallFade;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-@keyframes fallFade {
-  0% {
-    transform: translateY(-60px);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(110vh);
-    opacity: 0;
-  }
-}
 
 /* RWD 字體微調 */
 @media (max-width: 768px) {
