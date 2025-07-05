@@ -103,6 +103,25 @@
 </main>
 <!-- 引入 JS（放 body 結尾比較好） -->
 <script src="js/index.js"></script>
-
+<!-- 放在 body 最下方 js/index.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+<script>
+  VANTA.NET({
+    el: "#hero", // 👈 讓它套在首頁大圖區
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.00,
+    minWidth: 200.00,
+    scale: 1.00,
+    scaleMobile: 1.00,
+    color: 0xd1d1d1,        // 粒子顏色（略淺灰）
+    backgroundColor: 0x363636, // 背景同妳網站底色
+    points: 8.0,            // 粒子點的數量（調多調少都行）
+    maxDistance: 20.0,      // 粒子距離
+    spacing: 15.0           // 粒子間距
+  });
+</script>
 </body>
 </html>
