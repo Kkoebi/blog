@@ -47,15 +47,6 @@ window.addEventListener('resize', () => {
 
 const container = document.getElementById('lines-container');
 const lineCount = 50;
-const isMobile = window.innerWidth <= 768;
-
-const lines = Array.from({ length: isMobile ? 40 : 80 }, () => ({
-  x: Math.random() * width,
-  y: Math.random() * height,
-  length: Math.random() * 80 + 20,
-  speed: (Math.random() * 2 + 1) * (isMobile ? 0.5 : 1),
-  opacity: Math.random() * 0.5 + 0.3,
-}));
 
 for(let i = 0; i < lineCount; i++) {
   const line = document.createElement('div');
