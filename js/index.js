@@ -46,7 +46,7 @@ window.addEventListener('resize', () => {
 });
 
 const container = document.querySelector('.line-container');
-const lineCount = window.innerWidth < 768 ? 7 : 30;
+const lineCount = window.innerWidth < 768 ? 12 : 30;
 const maxOpacity = 0.7;
 const lines = [];
 
