@@ -46,12 +46,12 @@ window.addEventListener('resize', () => {
 });
 
 const container = document.querySelector('.line-container');
-const lineCount = window.innerWidth < 768 ? 30 : 60;
+const lineCount = window.innerWidth < 768 ? 15 : 30;
 
 for (let i = 0; i < lineCount; i++) {
   const span = document.createElement('span');
   span.className = 'line';
-  span.innerText = '|';
+  span.innerText = '______';
   span.style.left = `${Math.random() * 100}%`;
   span.style.top = `${Math.random() * 100}%`;
   span.style.fontSize = `${Math.random() * 16 + 10}px`;
