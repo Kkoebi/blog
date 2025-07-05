@@ -11,6 +11,20 @@ body {
     line-height: 1.6;
 }
 
+/* 放在 css/index.css 最底部也可以 */
+#hero {
+  position: relative;
+  overflow: hidden;
+}
+
+#hero canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
 nav {
     position: fixed;
     top: 0; left: 0; right: 0;
