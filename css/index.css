@@ -333,12 +333,12 @@ nav.scrolled .hamburger div {
 }
 
 /* 放在 css/index.css 最底部也可以 */
-#hero {
+#body {
   position: relative;
   overflow: hidden;
 }
 
-#hero canvas {
+#body canvas {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
