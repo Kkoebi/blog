@@ -271,7 +271,7 @@ nav.scrolled .hamburger div {
 
 .line-container {
   position: fixed;
-  top: 0; left: 0;
+  top: 0; left: 0; width: 100%; height: 100%;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -285,6 +285,8 @@ nav.scrolled .hamburger div {
   font-size: 20px;
   opacity: 0;
   animation: float 6s ease-in-out infinite;
+  user-select: none;
+  white-space: nowrap;
 }
 
   .explosion-container {

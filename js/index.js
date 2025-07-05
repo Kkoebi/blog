@@ -48,6 +48,8 @@ window.addEventListener('resize', () => {
 const container = document.querySelector('.line-container');
 const lineCount = window.innerWidth < 768 ? 15 : 30;
 
+const lines = [];
+
 for (let i = 0; i < lineCount; i++) {
   const span = document.createElement('span');
   span.className = 'line';
@@ -55,10 +57,65 @@ for (let i = 0; i < lineCount; i++) {
   span.style.left = `${Math.random() * 100}%`;
   span.style.top = `${Math.random() * 100}%`;
   span.style.fontSize = `${Math.random() * 16 + 10}px`;
-  span.style.transform = `rotate(${Math.random() * 360}deg)`;
+  const initialRotate = Math.random() * 360;
+  span.style.transform = `rotate(${initialRotate}deg)`;
   span.style.animationDelay = `${Math.random() * 6}s`;
   container.appendChild(span);
+
+  lines.push({
+    el: span,
+    x: parseFloat(span.style.left),
+    y: parseFloat(span.style.top),
+    angle: Math.random() * 2 * Math.PI,
+    speed: 0.03 + Math.random() * 0.009,
+    rotate: initialRotate,
+    rotateSpeed: (Math.random() * 0.5 - 0.25)
+  });
 }
+
+function animate() {
+  lines.forEach(line => {
+    // 亂飄位置
+    line.x += Math.cos(line.angle) * line.speed;
+    line.y += Math.sin(line.angle) * line.speed;
+
+    // 輕微改變移動方向
+    line.angle += (Math.random() - 0.5) * 0.1;
+
+    // 邊界限制(百分比) 讓線條不會飛出螢幕外
+    if (line.x < 0) {
+  line.x = 0;
+  line.angle = Math.PI - line.angle;  // 水平方向反向
+}
+if (line.x > 100) {
+  line.x = 100;
+  line.angle = Math.PI - line.angle;
+}
+if (line.y < 0) {
+  line.y = 0;
+  line.angle = -line.angle;  // 垂直方向反向
+}
+if (line.y > 100) {
+  line.y = 100;
+  line.angle = -line.angle;
+}
+
+
+    // 轉動
+    line.rotate += line.rotateSpeed;
+
+    // 更新 CSS
+    line.el.style.left = line.x + '%';
+    line.el.style.top = line.y + '%';
+    line.el.style.transform = `rotate(${line.rotate}deg)`;
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+
 
 const explosionContainer = document.querySelector('.explosion-container');
 
