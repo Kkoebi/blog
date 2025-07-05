@@ -45,14 +45,73 @@ window.addEventListener('resize', () => {
     }
 });
 
-const container = document.getElementById('lines-container');
-const lineCount = 50;
+const canvas = document.getElementById('falling-lines-canvas');
+const ctx = canvas.getContext('2d');
 
-for(let i = 0; i < lineCount; i++) {
-  const line = document.createElement('div');
-  line.className = 'line';
-  line.style.left = Math.random() * 100 + 'vw';
-  line.style.animationDuration = (Math.random() * 3 + 2) + 's'; // 2~5秒
-  line.style.animationDelay = (Math.random() * 5) + 's'; // 隨機延遲
-  container.appendChild(line);
+let width = window.innerWidth;
+let height = window.innerHeight;
+canvas.width = width;
+canvas.height = height;
+
+const isMobile = window.innerWidth <= 768;
+
+// 手機少一半，且速度減半
+const LINE_COUNT = isMobile ? 30 : 60;
+const SPEED_MULTIPLIER = isMobile ? 0.3 : 0.6;
+
+// 生成亂飄的線條（以 `|` 模擬）
+let lines = Array.from({ length: LINE_COUNT }, () => createWanderingLine());
+
+function createWanderingLine() {
+  return {
+    x: Math.random() * width,
+    y: Math.random() * height,
+    dx: (Math.random() - 0.5) * SPEED_MULTIPLIER, // 左右漂
+    dy: (Math.random() - 0.5) * SPEED_MULTIPLIER, // 上下漂
+    size: Math.random() * 14 + 12, // 字體大小
+    opacity: Math.random() * 0.5 + 0.3
+  };
 }
+
+function drawWanderingLines() {
+  ctx.clearRect(0, 0, width, height);
+  ctx.font = "bold 16px monospace";
+
+  lines.forEach(line => {
+    ctx.font = `bold ${line.size}px monospace`;
+    ctx.fillStyle = `rgba(255, 255, 255, ${line.opacity})`;
+    ctx.fillText('|', line.x, line.y);
+
+    line.x += line.dx;
+    line.y += line.dy;
+
+    // 緩慢變淡
+    line.opacity -= 0.001;
+
+    // 重生條件
+    if (
+      line.x < 0 || line.x > width ||
+      line.y < 0 || line.y > height ||
+      line.opacity <= 0
+    ) {
+      Object.assign(line, createWanderingLine());
+      line.y = Math.random() * height;
+      line.x = Math.random() * width;
+    }
+  });
+
+  requestAnimationFrame(drawWanderingLines);
+}
+
+drawWanderingLines();
+
+window.addEventListener('resize', () => {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+
+  const isNowMobile = window.innerWidth <= 768;
+  const count = isNowMobile ? 30 : 60;
+  lines = Array.from({ length: count }, () => createWanderingLine());
+});
