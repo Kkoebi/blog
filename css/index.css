@@ -269,15 +269,44 @@ nav.scrolled .hamburger div {
     }
 }
 
-#falling-lines-canvas {
+.line-container {
   position: fixed;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   z-index: 0;
   pointer-events: none;
 }
 
+.line {
+  position: absolute;
+  color: white;
+  font-size: 20px;
+  opacity: 0;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-30px, -50px) rotate(180deg);
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(50px, 60px) rotate(360deg);
+    opacity: 0;
+  }
+}
 
 /* RWD 字體微調 */
 @media (max-width: 768px) {

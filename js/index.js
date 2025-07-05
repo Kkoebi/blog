@@ -45,99 +45,17 @@ window.addEventListener('resize', () => {
     }
 });
 
-// 
+const container = document.querySelector('.line-container');
+const lineCount = window.innerWidth < 768 ? 30 : 60;
 
-const canvas = document.getElementById('falling-lines-canvas');
-const ctx = canvas.getContext('2d');
-
-let width = window.innerWidth;
-let height = window.innerHeight;
-canvas.width = width;
-canvas.height = height;
-
-const CHAR = '|';
-const TOTAL = 60;
-const particles = [];
-
-const gradientColors = [
-  '#f6d365', '#fda085', '#fbc2eb', '#a6c1ee', '#84fab0', '#8fd3f4'
-];
-
-function getRandomGradient() {
-  const start = gradientColors[Math.floor(Math.random() * gradientColors.length)];
-  const end = gradientColors[Math.floor(Math.random() * gradientColors.length)];
-  const gradient = ctx.createLinearGradient(0, 0, 20, 20);
-  gradient.addColorStop(0, start);
-  gradient.addColorStop(1, end);
-  return gradient;
+for (let i = 0; i < lineCount; i++) {
+  const span = document.createElement('span');
+  span.className = 'line';
+  span.innerText = '|';
+  span.style.left = `${Math.random() * 100}%`;
+  span.style.top = `${Math.random() * 100}%`;
+  span.style.fontSize = `${Math.random() * 16 + 10}px`;
+  span.style.transform = `rotate(${Math.random() * 360}deg)`;
+  span.style.animationDelay = `${Math.random() * 6}s`;
+  container.appendChild(span);
 }
-
-function createParticle() {
-  return {
-    x: Math.random() * width,
-    y: Math.random() * height,
-    vx: (Math.random() - 0.5) * 0.6,
-    vy: (Math.random() - 0.5) * 0.6,
-    angle: Math.random() * Math.PI * 2,
-    rotationSpeed: (Math.random() - 0.5) * 0.02,
-    opacity: 0,
-    fadeIn: true,
-    color: getRandomGradient(),
-    size: Math.random() * 24 + 16
-  };
-}
-
-// 初始化粒子
-for (let i = 0; i < TOTAL; i++) {
-  particles.push(createParticle());
-}
-
-function draw() {
-  ctx.clearRect(0, 0, width, height);
-
-  particles.forEach(p => {
-    // 漸層填色
-    ctx.save();
-    ctx.translate(p.x, p.y);
-    ctx.rotate(p.angle);
-    ctx.font = `${p.size}px monospace`;
-    ctx.fillStyle = p.color;
-    ctx.globalAlpha = p.opacity;
-    ctx.fillText(CHAR, 0, 0);
-    ctx.restore();
-
-    // 更新位置與透明度
-    p.x += p.vx;
-    p.y += p.vy;
-    p.angle += p.rotationSpeed;
-
-    if (p.fadeIn) {
-      p.opacity += 0.005;
-      if (p.opacity >= 0.8) p.fadeIn = false;
-    } else {
-      p.opacity -= 0.002;
-    }
-
-    // 超出畫面或透明度為 0，重生
-    if (
-      p.x < -50 || p.x > width + 50 ||
-      p.y < -50 || p.y > height + 50 ||
-      p.opacity <= 0
-    ) {
-      Object.assign(p, createParticle());
-    }
-  });
-
-  ctx.globalAlpha = 1.0;
-  requestAnimationFrame(draw);
-}
-
-draw();
-
-// 響應式
-window.addEventListener('resize', () => {
-  width = window.innerWidth;
-  height = window.innerHeight;
-  canvas.width = width;
-  canvas.height = height;
-});
