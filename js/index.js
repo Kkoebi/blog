@@ -19,101 +19,45 @@ window.addEventListener('scroll', () => {
     }
 });
 
-const canvas = document.getElementById('snowCanvas');
-const ctx = canvas.getContext('2d');
-
-let width = window.innerWidth;
-let height = window.innerHeight;
-canvas.width = width;
-canvas.height = height;
-
-const snowflakes = [];
-const maxSnowflakes = 200; // 雪花上限
-
-function createSnowflake(x = Math.random() * width, y = Math.random() * height) {
-  return {
-    x: x,
-    y: y,
-    radius: Math.random() * 3 + 1,
-    speedY: Math.random() * 1.5 + 0.5,
-    speedX: Math.random() * 0.5 - 0.25,
-    alpha: Math.random() * 0.5 + 0.5
-  };
-}
-
-// 初始雪花
-for (let i = 0; i < 150; i++) {
-  snowflakes.push(createSnowflake());
-}
-
-function drawSnowflakes() {
-  ctx.clearRect(0, 0, width, height);
-  snowflakes.forEach(flake => {
-    ctx.beginPath();
-    ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255, 255, 255, ${flake.alpha})`;
-    ctx.fill();
-  });
-}
-
-function updateSnowflakes() {
-  snowflakes.forEach((flake, index) => {
-    flake.y += flake.speedY;
-    flake.x += flake.speedX;
-
-    if (flake.y > height) {
-      flake.y = -flake.radius;
-      flake.x = Math.random() * width;
+<script>
+particlesJS('particles-js', {
+  "particles": {
+    "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+    "color": { "value": "#ffffff" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.4 },
+    "size": { "value": 2.5, "random": true },
+    "line_linked": {
+      "enable": true,
+      "distance": 130,
+      "color": "#ffffff",
+      "opacity": 0.3,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1.5,
+      "direction": "none",
+      "out_mode": "out"
     }
-
-    if (flake.x > width || flake.x < 0) {
-      flake.x = Math.random() * width;
+  },
+  "interactivity": {
+    "events": {
+      "onhover": { "enable": true, "mode": "grab" },
+      "onclick": { "enable": true, "mode": "push" },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 200,
+        "line_linked": { "opacity": 0.5 }
+      },
+      "push": { "particles_nb": 2 }
     }
-  });
-}
-
-function loop() {
-  drawSnowflakes();
-  updateSnowflakes();
-  requestAnimationFrame(loop);
-}
-
-loop();
-
-// 滑鼠產雪
-window.addEventListener('mousemove', e => {
-  for (let i = 0; i < 3; i++) {
-    snowflakes.push(createSnowflake(e.clientX, e.clientY));
-  }
-  if (snowflakes.length > maxSnowflakes) snowflakes.splice(0, snowflakes.length - maxSnowflakes);
+  },
+  "retina_detect": true
 });
-
-// 觸控產雪
-window.addEventListener('touchmove', e => {
-  for (let i = 0; i < e.touches.length; i++) {
-    const touch = e.touches[i];
-    for (let j = 0; j < 3; j++) {
-      snowflakes.push(createSnowflake(touch.clientX, touch.clientY));
-    }
-  }
-  if (snowflakes.length > maxSnowflakes) snowflakes.splice(0, snowflakes.length - maxSnowflakes);
-});
-
-// 視窗縮放時調整 canvas 尺寸
-window.addEventListener('resize', () => {
-  width = window.innerWidth;
-  height = window.innerHeight;
-  canvas.width = width;
-  canvas.height = height;
-});
-
-// resize canvas when window resizes
-window.addEventListener('resize', () => {
-  width = window.innerWidth;
-  height = window.innerHeight;
-  canvas.width = width;
-  canvas.height = height;
-});
+</script>
 
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');      // 漢堡變 X
