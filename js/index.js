@@ -45,74 +45,14 @@ window.addEventListener('resize', () => {
     }
 });
 
-const canvas = document.getElementById('falling-lines-canvas');
-const ctx = canvas.getContext('2d');
+const container = document.getElementById('lines-container');
+const lineCount = 50;
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth * window.devicePixelRatio;
-  canvas.height = window.innerHeight * window.devicePixelRatio;
-  canvas.style.width = window.innerWidth + 'px';
-  canvas.style.height = window.innerHeight + 'px';
-  ctx.setTransform(1, 0, 0, 1, 0, 0);
-  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-  
-  width = window.innerWidth;
-  height = window.innerHeight;
-  
-  lines.forEach(line => {
-    line.x = Math.random() * width;
-    line.y = Math.random() * height;
-    line.length = Math.random() * 80 + 20;
-    line.speed = Math.random() * 2 + 1;
-    line.opacity = Math.random() * 0.5 + 0.3;
-  });
+for(let i = 0; i < lineCount; i++) {
+  const line = document.createElement('div');
+  line.className = 'line';
+  line.style.left = Math.random() * 100 + 'vw';
+  line.style.animationDuration = (Math.random() * 3 + 2) + 's'; // 2~5秒
+  line.style.animationDelay = (Math.random() * 5) + 's'; // 隨機延遲
+  container.appendChild(line);
 }
-
-let width = window.innerWidth;
-let height = window.innerHeight;
-
-resizeCanvas();
-
-const lines = Array.from({ length: 25 }, () => ({
-  x: Math.random() * width,
-  y: Math.random() * height,
-  length: Math.random() * 80 + 20,
-  speed: Math.random() * 2 + 1,
-  opacity: Math.random() * 0.5 + 0.3,
-}));
-
-let lastFrameTime = 0;
-const frameInterval = 1000 / 30;
-
-function draw(currentTime) {
-  if (currentTime - lastFrameTime < frameInterval) {
-    requestAnimationFrame(draw);
-    return;
-  }
-  lastFrameTime = currentTime;
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  lines.forEach(line => {
-    ctx.beginPath();
-    ctx.strokeStyle = `rgba(255, 255, 255, ${line.opacity})`;
-    ctx.moveTo(line.x, line.y);
-    ctx.lineTo(line.x, line.y + line.length);
-    ctx.stroke();
-
-    line.y += line.speed;
-    line.opacity -= 0.002;
-
-    if (line.y > height || line.opacity <= 0) {
-      line.y = -line.length;
-      line.x = Math.random() * width;
-      line.length = Math.random() * 80 + 20;
-      line.speed = Math.random() * 2 + 1;
-      line.opacity = Math.random() * 0.5 + 0.3;
-    }
-  });
-  requestAnimationFrame(draw);
-}
-
-draw();
-
-window.addEventListener('resize', resizeCanvas);
