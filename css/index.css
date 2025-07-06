@@ -1,154 +1,154 @@
 * {
-    margin: 0; padding: 0; box-sizing: border-box;
+  margin: 0; padding: 0; box-sizing: border-box;
 }
   
 body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    color: #d1d1d1;
-    background-color: #363636;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #d1d1d1;
+  background-color: #363636;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
 }
 
 nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: 60px;
-    background: rgba(54, 54 ,54 ,0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    font-weight: 500;
-    z-index: 100;
-    transition: background 0.5s ease, box-shadow 0.5s ease;
-    font-family: 'Noto Sans TC', 'Yu Gothic UI', sans-serif;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  background: rgba(54, 54 ,54 ,0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-weight: 500;
+  z-index: 100;
+  transition: background 0.5s ease, box-shadow 0.5s ease;
+  font-family: 'Noto Sans TC', 'Yu Gothic UI', sans-serif;
 }
 
 /* logo 置中 */
 nav > div.logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: 600;
-    color: inherit;
-    pointer-events: none; /* 點不到 */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 600;
+  color: inherit;
+  pointer-events: none; /* 點不到 */
 }
 
 nav.scrolled {
-    background: rgba(54, 54, 54, 0.9);
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  background: rgba(54, 54, 54, 0.9);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }
 
 nav.scrolled a {
-    color: #d1d1d1; /* 滾動後變深灰／黑字 */
+  color: #d1d1d1; /* 滾動後變深灰／黑字 */
 }
 
 nav a {
-    text-decoration: none;
-    /* color: #d1d1d1; */
-    color: rgba(54, 54, 54, 0.85); /* 初始白字，透明白 */
-    transition: color 0.3s ease;
-    font-size: 1.05rem;
-    padding: 8px 4px;
-    border-bottom: 2px solid transparent;
+  text-decoration: none;
+  /* color: #d1d1d1; */
+  color: rgba(54, 54, 54, 0.85); /* 初始白字，透明白 */
+  transition: color 0.3s ease;
+  font-size: 1.05rem;
+  padding: 8px 4px;
+  border-bottom: 2px solid transparent;
 }
 
 nav a:hover {
-    color: #a384bd;
-    border-bottom: 2px solid #a384bd;
+  color: #a384bd;
+  border-bottom: 2px solid #a384bd;
 }
 
 .hero {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero img {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .clean {
-    z-index: 1;
+  z-index: 1;
 }
 
 .blur {
-    z-index: 2;
-    filter: blur(0);
-    transition: filter 1s ease;
-    opacity: 1;
+  z-index: 2;
+  filter: blur(0);
+  transition: filter 1s ease;
+  opacity: 1;
 }
 
 .hero-text {
-    position: relative;
-    z-index: 3;
-    color: rgba(255, 255, 255, 0.1);
-    padding: 40px 30px;
-    text-align: center;
-    background: rgba(0,0,0,0.45);
-    max-width: 80%;
-    border-radius: 12px;
+  position: relative;
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.1);
+  padding: 40px 30px;
+  text-align: center;
+  background: rgba(0,0,0,0.45);
+  max-width: 80%;
+  border-radius: 12px;
 }
 
 main {
-    background: #363636;
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto 50px;
+  background: #363636;
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 0 auto 50px;
 }
 
 h2 {
-    color: #d1d1d1;
-    margin-bottom: 20px;
+  color: #d1d1d1;
+  margin-bottom: 20px;
 }
 
 p {
-    line-height: 1.6;
-    font-size: 1.1rem;
-    color: #d1d1d1;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  color: #d1d1d1;
 }
 
 /* 漢堡按鈕 */
 .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 6px;
-    z-index: 101;
-    transition: 0.3s ease;
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  z-index: 101;
+  transition: 0.3s ease;
 }
 
 .hamburger div {
-    width: 24px;
-    height: 2px;
-    background: #333;
-    border-radius: 2px;
-    background: rgba(54, 54, 54, 0.85);
-    transition: background 0.5s ease;
+  width: 24px;
+  height: 2px;
+  background: #333;
+  border-radius: 2px;
+  background: rgba(54, 54, 54, 0.85);
+  transition: background 0.5s ease, transform 0.4s ease;
 }
 
 nav.scrolled .hamburger div {
-    background: #d1d1d1;
+  background: #d1d1d1;
 }
 
 /* 漢堡按鈕變X動畫 */
 .hamburger.active div:nth-child(1) {
-    transform: rotate(45deg) translate(5px, -5px);
+  transform: rotate(45deg) translate(5px, -5px);
 }
 
 .hamburger.active div:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, 5px);
+  transform: rotate(-45deg) translate(5px, 5px);
 }
 
 .hamburger div {
@@ -157,27 +157,27 @@ nav.scrolled .hamburger div {
 
 /* 手機版選單 */
 .mobile-menu {
-    display: flex;
-    position: fixed;
-    top: 54px; /* nav 高度 */
-    left: -250px; /* 藏左側外面 */
-    width: 250px;
-    height: 100vh;
-    background: rgba(54, 54, 54, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 30px 20px;
-    gap: 20px;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
-    transition: left 0.3s ease, background 0.5s ease, color 0.5s ease;
-    z-index: 99;
+  display: flex;
+  position: fixed;
+  top: 54px; /* nav 高度 */
+  left: -250px; /* 藏左側外面 */
+  width: 250px;
+  height: 100vh;
+  background: rgba(54, 54, 54, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 30px 20px;
+  gap: 20px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+  transition: left 0.3s ease, background 0.5s ease, color 0.5s ease;
+  z-index: 99;
 }
 
 .mobile-menu.scrolled {
-    background: rgba(54, 54, 54, 0.8);
-    color: #333;
+  background: rgba(54, 54, 54, 0.8);
+  color: #333;
 }
 
 .mobile-menu.active {
@@ -259,16 +259,6 @@ nav.scrolled .hamburger div {
   right: -0.5em;
 }
 
-/* RWD */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
-    .hamburger {
-      display: flex;
-    }
-}
-
 .line-container {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
@@ -289,31 +279,33 @@ nav.scrolled .hamburger div {
   white-space: nowrap;
 }
 
-  .explosion-container {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    pointer-events: none;
-    overflow: visible;
-    z-index: 9999;
-  }
-  .explosion-box {
+.explosion-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 9999;
+}
+
+.explosion-box {
   position: absolute;
   background: transparent;
   border: 1.5px solid rgba(255, 255, 255, 0.8);
   opacity: 1;
   animation: explodeFade 1.7s forwards;
 }
-  @keyframes explodeFade {
-    0% {
-      opacity: 1;
-      transform: scale(1) translate(0,0) rotate(0deg);
-    }
-    100% {
-      opacity: 0;
-      transform: scale(1.5) translate(var(--dx), var(--dy)) rotate(var(--dr));
-    }
+
+@keyframes explodeFade {
+  0% {
+    opacity: 1;
+    transform: scale(1) translate(0,0) rotate(0deg);
   }
+  100% {
+    opacity: 0;
+    transform: scale(1.5) translate(var(--dx), var(--dy)) rotate(var(--dr));
+  }
+}
 
 @keyframes float {
   0% {
@@ -333,6 +325,16 @@ nav.scrolled .hamburger div {
   100% {
     transform: translate(50px, 60px) rotate(360deg);
     opacity: 0;
+  }
+}
+
+/* RWD */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
   }
 }
 
