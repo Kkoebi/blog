@@ -38,6 +38,15 @@ nav > div.logo {
   pointer-events: none; /* 點不到 */
 }
 
+nav .logo {
+  color: rgba(54, 54, 54, 0.85); /* 初始深色 */
+  transition: color 0.4s ease;
+}
+
+nav.scrolled .logo {
+  color: #d1d1d1; /* 滾動後白色 */
+}
+
 nav.scrolled {
   background: rgba(54, 54, 54, 0.9);
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
@@ -301,6 +310,7 @@ nav.scrolled .hamburger div {
     opacity: 1;
     transform: scale(1) translate(0,0) rotate(0deg);
   }
+
   100% {
     opacity: 0;
     transform: scale(1.5) translate(var(--dx), var(--dy)) rotate(var(--dr));
@@ -312,16 +322,20 @@ nav.scrolled .hamburger div {
     transform: translate(0, 0) rotate(0deg);
     opacity: 0;
   }
+
   20% {
     opacity: 1;
   }
+
   50% {
     transform: translate(-30px, -50px) rotate(180deg);
     opacity: 0.8;
   }
+
   80% {
     opacity: 1;
   }
+  
   100% {
     transform: translate(50px, 60px) rotate(360deg);
     opacity: 0;
@@ -333,6 +347,7 @@ nav.scrolled .hamburger div {
   .nav-links {
     display: none;
   }
+
   .hamburger {
     display: flex;
   }
@@ -340,37 +355,37 @@ nav.scrolled .hamburger div {
 
 /* RWD 字體微調 */
 @media (max-width: 768px) {
-    nav {
-        gap: 16px;
-        font-size: 0.95rem;
-        height: 56px;
-    }
+  nav {
+    gap: 16px;
+    font-size: 0.95rem;
+    height: 56px;
+  }
     
-    nav a {
-        font-size: 0.95rem;
-        padding: 6px 2px;
-    }
+  nav a {
+    font-size: 0.95rem;
+    padding: 6px 2px;
+  }
     
-    .hero-text {
-        font-size: 0.95rem;
-        padding: 20px 16px;
-    }
+  .hero-text {
+    font-size: 0.95rem;
+    padding: 20px 16px;
+  }
     
-    h1 {
-        font-size: 1.6rem;
-    }
+  h1 {
+    font-size: 1.6rem;
+  }
     
-    h2 {
-        font-size: 1.3rem;
-    }
+  h2 {
+    font-size: 1.3rem;
+  }
     
-    p {
-        font-size: 1rem;
-    }
+  p {
+    font-size: 1rem;
+  }
     
-    main {
-        padding: 24px 16px;
-    }
+  main {
+    padding: 24px 16px;
+  }
 }
 
 @media screen and (max-width: 1150px) {
