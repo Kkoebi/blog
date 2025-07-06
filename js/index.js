@@ -159,4 +159,10 @@ const explosionContainer = document.querySelector('.explosion-container');
 
   window.addEventListener('click', (e) => {
     createExplosion(e.clientX, e.clientY);
-  });
+
+  document.addEventListener('touchstart', (e) => {
+  const touch = e.touches[0];
+  explode(touch.clientX, touch.clientY);
+});
+
+});
