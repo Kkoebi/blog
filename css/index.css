@@ -34,17 +34,13 @@ nav > div.logo {
   left: 50%;
   transform: translateX(-50%);
   font-weight: 600;
-  color: inherit;
+  color: rgba(54, 54, 54, 0.85); /* 初始 */
   pointer-events: none; /* 點不到 */
-}
-
-nav .logo {
-  color: rgba(54, 54, 54, 0.85); /* 初始深色 */
-  transition: color 0.4s ease;
+  transition: color 0.3s ease;
 }
 
 nav.scrolled .logo {
-  color: #d1d1d1; /* 滾動後白色 */
+  color: #d1d1d1; /* 滾動後 */
 }
 
 nav.scrolled {
