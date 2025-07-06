@@ -1,3 +1,23 @@
+const fadeElems = document.querySelectorAll('.fade-up');
+
+function checkFade() {
+  const windowBottom = window.innerHeight + window.scrollY;
+
+  fadeElems.forEach(elem => {
+    const elemTop = elem.offsetTop;
+
+    if (windowBottom > elemTop + 50) {
+      elem.classList.add('visible');
+    } else {
+      elem.classList.remove('visible');  // 不在視窗範圍就移除
+    }
+  });
+}
+
+checkFade();
+
+window.addEventListener('scroll', checkFade);
+
 const blurImg = document.getElementById('blurImg');
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
