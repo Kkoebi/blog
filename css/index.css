@@ -107,60 +107,61 @@ nav a:hover {
 }
 
 .hero-text {
-  position: relative;
-  z-index: 3;
-  color: rgba(255, 255, 255, 0.1);
-  padding: 40px 30px;
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  background: rgba(0,0,0,0.45);
-  max-width: 80%;
-  border-radius: 12px;
-  overflow: hidden;
-  margin: 0 auto;
-}
-
-.hero-line {
-  width: 4px;
-  height: 80px;
-  margin: 0 auto;
-  background-color: #fff;
-  animation: lineSplit 1.2s ease forwards;
-}
-
-.hero-title, .hero-sub {
+  color: white;
+  text-shadow: 0 0 30px rgba(0,0,0,0.3), 0 0 10px rgba(0,0,0,0.4);
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.8s ease forwards;
+  animation: fadeInText 1s ease forwards;
+  animation-delay: 1.1s;
 }
 
-.hero-title {
+.line-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+}
+
+/* 中心線條（會展開並消失） */
+.center-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 2px;
+  background-color: white;
+  width: 0;
+  transform: translate(-50%, -50%);
+  animation: expandWidth 1s ease forwards, fadeOut 0.5s ease forwards;
+  animation-delay: 0s, 1s;
+}
+
+/* 上下滑開的線條（預設透明） */
+.half-line {
+  position: absolute;
+  left: 50%;
+  width: 400px;
+  height: 2px;
+  background-color: white;
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+/* 上方線條從中間往上滑出 */
+.half-line.top {
+  top: 50%;
+  animation: slideUp 1s ease forwards;
   animation-delay: 1s;
-  font-size: 2.4rem;
-  margin-top: 20px;
-  color: rgba(255, 255, 255, 0.9);
 }
 
-.hero-sub {
-  animation-delay: 1.4s;
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-@keyframes lineSplit {
-  0% {
-    height: 80px;
-  }
-  100% {
-    height: 0;
-    transform: translateY(-40px);
-  }
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* 下方線條從中間往下滑出 */
+.half-line.bottom {
+  top: 50%;
+  animation: slideDown 1s ease forwards;
+  animation-delay: 1s;
 }
 
 main {
@@ -356,6 +357,43 @@ nav.scrolled .hamburger div {
   border: 1.5px solid rgba(255, 255, 255, 0.8);
   opacity: 1;
   animation: explodeFade 1.7s forwards;
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -30%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes expandWidth {
+  to {
+    width: 400px;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  to {
+    transform: translate(-50%, -100px);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  to {
+    transform: translate(-50%, 100px);
+    opacity: 1;
+  }
 }
 
 @keyframes explodeFade {
