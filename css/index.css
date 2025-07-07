@@ -164,11 +164,6 @@ nav a:hover {
   animation-delay: 1s;
 }
 
-.center-line,
-.half-line {
-  width: min(90vw, 400px);
-}
-
 main {
   background: #363636;
   padding: 40px 20px;
