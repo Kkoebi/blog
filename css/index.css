@@ -230,12 +230,12 @@ p {
   height: 2px;
   background: #333;
   border-radius: 2px;
-  background: rgba(54, 54, 54, 0.85);
+  background: rgba(209, 209, 209, 0.85);
   transition: background 0.5s ease, transform 0.4s ease;
 }
 
 nav.scrolled .hamburger div {
-  background: #d1d1d1;
+  background: #363636;
 }
 
 /* 漢堡按鈕變X動畫 */
