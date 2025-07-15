@@ -85,11 +85,6 @@ body a {
   transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
-body a:hover {
-  color: #a384bd;
-  border-bottom: 2px solid #a384bd;
-}
-
 a {
   position: relative;
   color: inherit;
