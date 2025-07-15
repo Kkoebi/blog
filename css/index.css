@@ -276,6 +276,24 @@ nav.scrolled .hamburger div {
   left: 0;
 }
 
+.mobile-menu a {
+  color: #333; /* 預設深色 */
+  transition: color 0.5s ease;
+}
+
+.mobile-menu.active a {
+  animation: fadeTextColor 1s forwards;
+}
+
+@keyframes fadeTextColor {
+  from {
+    color: #333; /* 深色 */
+  }
+  to {
+    color: #d1d1d1; /* 淺色 */
+  }
+}
+
 .timeline {
   margin: 5em auto;
   max-width: 34.15em;
