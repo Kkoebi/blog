@@ -78,7 +78,11 @@ nav a:hover {
   border-bottom: 2px solid #a384bd;
 }
 
-body a {
+nav a::after {
+  bottom: -2px; /* 再往下移動一點，看起來更平衡 */
+}
+
+main a, .timeline a, .content a {
   color: inherit; /* 跟著父元素走，不是預設藍色 */
   text-decoration: none;
   border-bottom: 2px solid transparent;
@@ -100,6 +104,11 @@ a::after {
   width: 0%;
   background-color: #a384bd;
   transition: width 0.3s ease;
+}
+
+a:hover,
+a.clicked {
+  color: #a384bd; /* 紫色 */
 }
 
 a:hover::after,
@@ -267,6 +276,35 @@ nav.scrolled .hamburger div {
   z-index: 99;
 }
 
+.mobile-menu.active a {
+  color: rgba(54, 54, 54, 0.8); /* 淺色 */
+}
+
+.mobile-menu.active.scrolled a {
+  color: #d1d1d1; /* 淺色 */
+}
+
+.mobile-menu.active a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;  /* 底線位置可調 */
+  height: 2px;
+  width: 0;
+  background-color: #d1d1d1; /* 底線紫色 */
+  transition: width 0.3s ease;
+}
+
+.mobile-menu.active a:hover,
+.mobile-menu.active a:focus {
+  color: #d1d1d1;  /* 滑鼠/鍵盤焦點時文字紫 */
+}
+
+.mobile-menu.active a:hover::after,
+.mobile-menu.active a:focus::after {
+  width: 100%;   /* 底線展開 */
+}
+
 .mobile-menu.scrolled {
   background: rgba(54, 54, 54, 0.8);
   color: #333;
@@ -274,24 +312,6 @@ nav.scrolled .hamburger div {
 
 .mobile-menu.active {
   left: 0;
-}
-
-.mobile-menu a {
-  color: #333; /* 預設深色 */
-  transition: color 0.5s ease;
-}
-
-.mobile-menu.active a {
-  animation: fadeTextColor 1s forwards;
-}
-
-@keyframes fadeTextColor {
-  from {
-    color: #333; /* 深色 */
-  }
-  to {
-    color: #d1d1d1; /* 淺色 */
-  }
 }
 
 .timeline {
@@ -404,6 +424,17 @@ nav.scrolled .hamburger div {
   border: 1.5px solid rgba(255, 255, 255, 0.8);
   opacity: 1;
   animation: explodeFade 1.7s forwards;
+}
+
+@media (min-width: 769px) {
+  nav a::after {
+    background-color: #d1d1d1;
+  }
+
+  nav a:hover,
+  nav a.clicked {
+    color: #d1d1d1;
+  }
 }
 
 @keyframes fadeInText {

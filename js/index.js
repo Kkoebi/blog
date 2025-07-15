@@ -41,20 +41,15 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// 簡單偵測是否為觸控裝置
-const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
 
-// 如果是手機或平板，處理點擊效果
-if (isTouchDevice) {
-  document.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', e => {
-      link.classList.add('clicked');
-      setTimeout(() => {
-        link.classList.remove('clicked');
-      }, 600); // 動畫時間
-    });
-  });
-}
+  if(scrollY > 50) {
+    mobileMenu.classList.add('scrolled');
+  } else {
+    mobileMenu.classList.remove('scrolled');
+  }
+});
 
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');      // 漢堡變 X
