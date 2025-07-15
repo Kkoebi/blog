@@ -78,6 +78,18 @@ nav a:hover {
   border-bottom: 2px solid #a384bd;
 }
 
+body a {
+  color: inherit; /* 跟著父元素走，不是預設藍色 */
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+body a:hover {
+  color: #a384bd;
+  border-bottom: 2px solid #a384bd;
+}
+
 .hero {
   position: relative;
   height: 100vh;
