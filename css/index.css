@@ -280,6 +280,21 @@ nav.scrolled .hamburger div {
   left: 0;
 }
 
+/* 手機選單文字初始黑色 */
+.mobile-menu a {
+  color: #333;
+  transition: color 0.3s ease;  /* 加個過渡 */
+}
+
+/* 漢堡打開時（.active），文字變白 */
+.mobile-menu.active a {
+  color: #fff;
+}
+
+.mobile-menu.scrolled a {
+  color: #fff;
+}
+
 .timeline {
   margin: 5em auto;
   max-width: 34.15em;
