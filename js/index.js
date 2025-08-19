@@ -1,3 +1,22 @@
+const body = document.body;
+const toggleBtn = document.getElementById('theme-toggle');
+
+toggleBtn.addEventListener('click', () => {
+  if (body.classList.contains('dark')) {
+    body.classList.remove('dark');
+    body.classList.add('light');
+    toggleBtn.classList.remove('dark');
+    toggleBtn.classList.add('light');
+    toggleBtn.textContent = '☀️';
+  } else {
+    body.classList.remove('light');
+    body.classList.add('dark');
+    toggleBtn.classList.remove('light');
+    toggleBtn.classList.add('dark');
+    toggleBtn.textContent = '🌙';
+  }
+});
+
 const fadeElems = document.querySelectorAll('.fade-up');
 
 function checkFade() {
