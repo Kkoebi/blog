@@ -1,14 +1,78 @@
 * {
   margin: 0; padding: 0; box-sizing: border-box;
 }
-  
+
+:root {
+  --bg-gradient: linear-gradient(to bottom, #ffffff, #a1c4fd); /* 預設淺色 */
+  --text-color: #222;
+  --explosion-color: #0a2342
+  --checkpoint-border: #00008b;
+  --checkpoint-line: #00008b; 
+}
+
+#theme-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.5s ease, color 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 105;
+}
+
+/* 淺色模式 */
+#theme-toggle.light {
+  background-color: #ffffff; /* 太陽黃色底 */
+  color: #fff;               /* 太陽白色文字/圖案 */
+}
+
+/* 深色模式 */
+#theme-toggle.dark {
+  background-color: #0a2342; /* 深藍底 */
+  color: #fff;               /* 月亮白色圖案 */
+}
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #d1d1d1;
-  background-color: #363636;
+  color: var(--text-color);
+  background: var(--bg-gradient);
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  transition: background 0.8s ease, color 0.5s ease;
+}
+
+/* 深色模式 */
+body.dark {
+  --bg-gradient: linear-gradient(to bottom, #000000, #0a2342); /* 黑 → 深藍 */
+  --text-color: #d1d1d1;
+  --footer-bg: #0a2342;   /* 深色背景 */
+  --footer-text: #d1d1d1; /* 浅文字 */
+  --footer-border: rgba(255,255,255,0.1);
+  --footer-hover: #ffffff; /* hover 白色 */
+  --explosion-color: #ffffff; /* 深色主題炸方塊顏色 */
+  --checkpoint-border: #ffffff; /* 深色模式邊框色，例如藍色 */
+  --checkpoint-line: #fff;
+}
+
+/* 淺色模式 */
+body.light {
+  --bg-gradient: linear-gradient(to bottom, #ffffff, #a1c4fd); /* 白 → 藍 */
+  --text-color: #20294e;
+  --footer-bg: #a1c4fd;   /* 浅藍背景 */
+  --footer-text: #2b2b2b; /* 深文字 */
+  --footer-border: rgba(0,0,0,0.1);
+  --footer-hover: #00008b; /* 深藍色 hover */
+  --explosion-color: #00008b; /* 淺色主題炸方塊顏色 */
+  --checkpoint-border: #00008b; /* 深色模式邊框色，例如藍色 */
+  --checkpoint-line: #00008b;
 }
 
 .fade-up {
@@ -83,7 +147,7 @@ nav a::after {
 }
 
 main a, .timeline a, .content a {
-  color: inherit; /* 跟著父元素走，不是預設藍色 */
+  color: inherit; /* 跟著父元素走 */
   text-decoration: none;
   border-bottom: 2px solid transparent;
   transition: color 0.3s ease, border-bottom 0.3s ease;
@@ -203,21 +267,35 @@ a.clicked::after {
 }
 
 main {
-  background: #363636;
+  background: inherit;        /* 繼承 body 背景漸層 */
   padding: 40px 20px;
-  max-width: 900px;
-  margin: 0 auto 50px;
+  max-width: 1200px;
+  margin: 20px auto 50px;    /* 上下稍微拉開，讓陰影看起來舒服 */
+  color: var(--text-color);   /* 文字跟 body 一樣 */
+  border-radius: 20px;        /* 圓角 */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* 陰影 */
+  transition: color 0.5s ease, box-shadow 0.5s ease, background 0.8s ease;
 }
 
 h2 {
-  color: #d1d1d1;
+  color: var(--text-color);  /* 改成跟 body 的文字顏色同步 */
+  transition: color 0.5s ease;
   margin-bottom: 20px;
 }
 
 p {
   line-height: 1.6;
   font-size: 1.1rem;
-  color: #d1d1d1;
+  color: var(--text-color);  /* 改成跟 body 的文字顏色同步 */
+  transition: color 0.5s ease;
+}
+
+hr {
+  border: none;                   /* 先移除預設 */
+  height: 1px;                     /* 線高 */
+  background-color: var(--text-color);  /* 跟 body 文字顏色同步 */
+  transition: background-color 0.5s ease;
+  margin: 20px 0;
 }
 
 /* 漢堡按鈕 */
@@ -327,37 +405,44 @@ nav.scrolled .hamburger div {
 }
 
 .checkpoint div {
-  border: 2px solid #888;
+  border: 2px solid var(--checkpoint-border);
   border-radius: 1em;
   padding: 1.5em;
+  transition: border 0.5s ease;
 }
 
 .checkpoint p {
   line-height: 27px;
-  color: #d1d1d1;
+  color: var(--text-color);  /* 改成跟 body 的文字顏色同步 */
+  transition: color 0.5s ease;
 }
 
 .checkpoint:nth-child(odd) {
-  border-left: 3px solid #888;
+  border-left: 3px solid var(--checkpoint-border);
   padding-left: 3em;
   transform: translateX(16.85em);
+  transition: border 0.5s ease;
 }
 
 .checkpoint:nth-child(even) {
-  border-right: 3px solid #888;
+  border-right: 3px solid var(--checkpoint-border);
   padding-right: 3em;
   transform: translateX(-17em);
+  transition: border 0.5s ease;
 }
 
 .checkpoint:nth-child(odd)::before,
 .checkpoint:nth-child(even)::before {
+  border-left: 2px solid var(--checkpoint-border);
   content: '';
-  background: #888;
+  background: var(--checkpoint-line);
   width: 3em;
   height: 3px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  transition: border 0.5s ease;
+  transition: background 0.5s ease;
 }
 
 .checkpoint:nth-child(odd)::before {
@@ -371,7 +456,7 @@ nav.scrolled .hamburger div {
 .checkpoint:nth-child(odd) div::before,
 .checkpoint:nth-child(even) div::before {
   content: '';
-  background: #fff;
+  background: var(--checkpoint-line);
   box-shadow: 0 0 0.5em #000000;
   width: 0.8em;
   height: 0.8em;
@@ -379,6 +464,7 @@ nav.scrolled .hamburger div {
   top: 50%;
   transform: translateY(-50%);
   border-radius: 50%;
+  transition: background 0.5s ease;
 }
 
 .checkpoint:nth-child(odd) div::before {
@@ -415,24 +501,23 @@ nav.scrolled .hamburger div {
   width: 100vw; height: 100vh;
   pointer-events: none;
   overflow: visible;
-  z-index: 9999;
+  z-index: 102;
 }
 
 .explosion-box {
   position: absolute;
-  background: transparent;
-  border: 1.5px solid rgba(255, 255, 255, 0.8);
-  opacity: 1;
+  background-color: transparent; /* 透明背景 */
+  border: 2px solid var(--explosion-color, #00008b);
   animation: explodeFade 1.7s forwards;
 }
 
 .site-footer {
-  background-color: #2b2b2b;
-  color: #d1d1d1;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
   text-align: center;
   padding: 15px 20px;
   font-size: 0.95rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--footer-border);
 }
 
 .site-footer .social-icons {
@@ -448,7 +533,7 @@ nav.scrolled .hamburger div {
 }
 
 .site-footer .social-icons a:hover {
-  color: #d1d1d1;
+  color: var(--footer-hover);
   transform: scale(1.2);
 }
 
