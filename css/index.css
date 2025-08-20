@@ -5,9 +5,61 @@
 :root {
   --bg-gradient: linear-gradient(to bottom, #ffffff, #a1c4fd); /* 預設淺色 */
   --text-color: #222;
-  --explosion-color: #0a2342
-  --checkpoint-border: #00008b;
-  --checkpoint-line: #00008b; 
+  --explosion-color: #0a2342;
+  --checkpoint-border: #20294e;
+  --checkpoint-line: #20294e; 
+  --nav-text-color: rgba(255, 255, 255);
+  --nav-scrolled-text-color: #20294e;
+  --hamburger-color: rgba(54, 54, 54, 0.85);
+  --hamburger-scrolled-color: #ffffff;
+  --mobile-text-color: rgba(255, 255, 255);
+  --mobile-scrolled-color: rgba(54,54,54, 1);
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 105;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 10px;
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  background-color: #0a2342;
+  color: #ffffff;
+  border: 1px solid #0a2342;
+  transition: background 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* 淺色模式 */
+.back-to-top.light {
+  background-color: #ffffff;
+  color: #0a2342;  /* 深色字 / icon */
+  border: 1px solid rgba(255, 255, 255);
+}
+
+/* 深色模式 */
+.back-to-top.dark {
+  background-color: #0a2342;
+  color: #ffffff;
+  border: 1px solid #0a2342;
 }
 
 #theme-toggle {
@@ -56,10 +108,15 @@ body.dark {
   --footer-bg: #0a2342;   /* 深色背景 */
   --footer-text: #d1d1d1; /* 浅文字 */
   --footer-border: rgba(255,255,255,0.1);
-  --footer-hover: #ffffff; /* hover 白色 */
-  --explosion-color: #ffffff; /* 深色主題炸方塊顏色 */
-  --checkpoint-border: #ffffff; /* 深色模式邊框色，例如藍色 */
-  --checkpoint-line: #fff;
+  --footer-hover: #d1d1d1; /* hover 白色 */
+  --explosion-color: #d1d1d1; /* 深色主題炸方塊顏色 */
+  --checkpoint-border: #d1d1d1; /* 深色模式邊框色，例如藍色 */
+  --checkpoint-line: #d1d1d1;
+  --nav-scrolled-text-color: #d1d1d1;     /* 滾動後也保持淺色 */
+  --hamburger-color: rgba(209,209,209,0.85);
+  --hamburger-scrolled-color: #d1d1d1;
+  --mobile-text-color: rgba(255,255,255);
+  --mobile-scrolled-color: rgba(255,255,255,0.8);
 }
 
 /* 淺色模式 */
@@ -69,10 +126,16 @@ body.light {
   --footer-bg: #a1c4fd;   /* 浅藍背景 */
   --footer-text: #2b2b2b; /* 深文字 */
   --footer-border: rgba(0,0,0,0.1);
-  --footer-hover: #00008b; /* 深藍色 hover */
-  --explosion-color: #00008b; /* 淺色主題炸方塊顏色 */
-  --checkpoint-border: #00008b; /* 深色模式邊框色，例如藍色 */
-  --checkpoint-line: #00008b;
+  --footer-hover: #20294e; /* 深藍色 hover */
+  --explosion-color: #20294e; /* 淺色主題炸方塊顏色 */
+  --checkpoint-border: #20294e; /* 深色模式邊框色，例如藍色 */
+  --checkpoint-line: #20294e;
+  --nav-text-color: #ffffff; /* 滾動前淺色 */
+  --nav-scrolled-text-color: #20294e;
+  --hamburger-color: rgba(54,54,54,0.85);
+  --hamburger-scrolled-color: #20294e;
+  --mobile-text-color: rgb(255, 255, 255);
+  --mobile-scrolled-color: rgba(54,54,54,0.85);
 }
 
 .fade-up {
@@ -90,7 +153,7 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   height: 60px;
-  background: rgba(54, 54 ,54 ,0.1);
+  background: rgba(54, 54, 54, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   display: flex;
@@ -109,29 +172,29 @@ nav > div.logo {
   left: 50%;
   transform: translateX(-50%);
   font-weight: 600;
-  color: rgba(54, 54, 54, 0.85); /* 初始 */
+  color: var(--nav-text-color);
   pointer-events: none; /* 點不到 */
-  transition: color 0.3s ease;
+  transition: color 0.5s ease;
 }
 
 nav.scrolled .logo {
-  color: #d1d1d1; /* 滾動後 */
+  color: var(--nav-scrolled-text-color);
 }
 
 nav.scrolled {
-  background: rgba(54, 54, 54, 0.9);
+  background: rgba(8, 14, 81, 0.1);
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }
 
 nav.scrolled a {
-  color: #d1d1d1; /* 滾動後變深灰／黑字 */
+  color: var(--nav-scrolled-text-color);
 }
 
 nav a {
   text-decoration: none;
   /* color: #d1d1d1; */
-  color: rgba(54, 54, 54, 0.85); /* 初始白字，透明白 */
-  transition: color 0.3s ease;
+  color: var(--nav-text-color);
+  transition: color 0.5s ease;
   font-size: 1.05rem;
   padding: 8px 4px;
   border-bottom: 2px solid transparent;
@@ -144,6 +207,11 @@ nav a:hover {
 
 nav a::after {
   bottom: -2px; /* 再往下移動一點，看起來更平衡 */
+}
+
+body.dark nav.scrolled .logo,
+body.dark nav.scrolled a {
+  color: var(--nav-text-color); /* 保持深色 */
 }
 
 main a, .timeline a, .content a {
@@ -206,6 +274,20 @@ a.clicked::after {
   filter: blur(0);
   transition: filter 1s ease;
   opacity: 1;
+}
+
+.clean, .blur {
+  display: block;
+  width: 100%;
+  height: auto;
+  
+  /* 底部漸層透明 */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+  mask-repeat: no-repeat;
+  mask-size: cover;
 }
 
 .hero-text {
@@ -305,6 +387,7 @@ hr {
   cursor: pointer;
   gap: 6px;
   z-index: 101;
+  color: var(--mobile-text-color);
   transition: 0.3s ease;
 }
 
@@ -313,12 +396,17 @@ hr {
   height: 2px;
   background: #333;
   border-radius: 2px;
-  background: rgba(54, 54, 54, 0.85);
+  background: var(--mobile-text-color);
   transition: background 0.5s ease, transform 0.4s ease;
 }
 
+/* 捲動後：整個按鈕顏色 & 線條顏色 */
+nav.scrolled .hamburger {
+  color: var(--mobile-scrolled-color);
+}
+
 nav.scrolled .hamburger div {
-  background: #d1d1d1;
+  background: var(--mobile-scrolled-color);
 }
 
 /* 漢堡按鈕變X動畫 */
@@ -342,7 +430,7 @@ nav.scrolled .hamburger div {
   left: -250px; /* 藏左側外面 */
   width: 250px;
   height: 100vh;
-  background: rgba(54, 54, 54, 0.2);
+  color: var(--mobile-text-color);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   flex-direction: column;
@@ -354,12 +442,17 @@ nav.scrolled .hamburger div {
   z-index: 99;
 }
 
+.mobile-menu a {
+  color: var(--mobile-text-color);
+  transition: color 0.5s ease;
+}
+
 .mobile-menu.active a {
-  color: rgba(54, 54, 54, 0.8); /* 淺色 */
+  color: var(--mobile-scrolled-color);
 }
 
 .mobile-menu.active.scrolled a {
-  color: #d1d1d1; /* 淺色 */
+  color: var(--mobile-scrolled-color);
 }
 
 .mobile-menu.active a::after {
@@ -384,8 +477,8 @@ nav.scrolled .hamburger div {
 }
 
 .mobile-menu.scrolled {
-  background: rgba(54, 54, 54, 0.8);
-  color: #333;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.1);
 }
 
 .mobile-menu.active {
@@ -507,7 +600,7 @@ nav.scrolled .hamburger div {
 .explosion-box {
   position: absolute;
   background-color: transparent; /* 透明背景 */
-  border: 2px solid var(--explosion-color, #00008b);
+  border: 2px solid var(--explosion-color, #20294e);
   animation: explodeFade 1.7s forwards;
 }
 
