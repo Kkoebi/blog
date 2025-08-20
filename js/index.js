@@ -17,6 +17,35 @@ toggleBtn.addEventListener('click', () => {
   }
 });
 
+const backToTop = document.getElementById('back-to-top');
+
+// 顯示 / 隱藏
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 200) {
+    backToTop.classList.add('show');
+  } else {
+    backToTop.classList.remove('show');
+  }
+});
+
+// 點擊滾回頂部
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// 監控深淺模式切換（假設你的 body 有 light / dark class）
+const observer = new MutationObserver(() => {
+  if (document.body.classList.contains('dark')) {
+    backToTop.classList.remove('light');
+    backToTop.classList.add('dark');
+  } else {
+    backToTop.classList.remove('dark');
+    backToTop.classList.add('light');
+  }
+});
+
+observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
 const fadeElems = document.querySelectorAll('.fade-up');
 
 function checkFade() {
@@ -68,6 +97,26 @@ window.addEventListener('scroll', () => {
   } else {
     mobileMenu.classList.remove('scrolled');
   }
+});
+
+const mobileLinks = document.querySelectorAll('.mobile-menu a');
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+
+  mobileLinks.forEach(link => {
+    if(body.classList.contains('light')) {
+      // 淺色模式：隨滾動變深色
+      if(scrollY > 50) {
+        link.style.color = 'var(--text-color)';        // 深色
+      } else {
+        link.style.color = 'var(--text-color-light)';  // 原淺色
+      }
+    } else {
+      // 深色模式：一直保持淺色
+      link.style.color = 'var(--text-color)';
+    }
+  });
 });
 
 hamburger.addEventListener('click', () => {
