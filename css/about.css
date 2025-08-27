@@ -356,7 +356,7 @@ a.clicked::after {
 }
 
 .content-block {
-  flex: 1 1 45%;   /* 電腦螢幕約佔 45% 寬度 */
+  flex: 1 3 45%;   /* 電腦螢幕約佔 45% 寬度 */
   min-width: 300px; /* 最小寬度，防止太小 */
   background: #f8f8f8;
   padding: 20px;
