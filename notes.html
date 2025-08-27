@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML's Blog - Notes</title>
+<!-- 引入 CSS -->
+<link rel="stylesheet" href="css/index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="dark">
+<button id="back-to-top" class="back-to-top">↑</button>
+<button id="theme-toggle" class="dark">🌙</button>
+<div id="loader-overlay"></div>
+<div class="line-container" aria-hidden="true"></div>
+<div class="explosion-container"></div>
+<nav id="navbar">
+        <div class="hamburger" id="hamburger" aria-label="切換選單" role="button" tabindex="0">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    
+        <div class="logo">XML's Blog</div>
+    
+        <div class="nav-links">
+            <a href="/blog/index.html">Home</a>
+            <a href="/about_me.html">About</a>
+            <a href="/timeline.html">Timeline</a>
+            <a href="./friends.html">Friends</a>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="/blog/index.html">Home</a>
+        <a href="/about_me.html">About</a>
+        <a href="/timeline.html">Timeline</a>
+        <a href="./friends.html">Friends</a>
+    </div>
+
+<section class="hero" id="hero">
+  <div class="line-wrapper">
+    <div class="center-line"></div>
+    <div class="half-line top"></div>
+    <div class="half-line bottom"></div>
+    <div class="hero-text">
+      <h1>Welcome to XML's Blog</h1>
+      <h6>這個人很懶，甚麼也沒有留下......</h6>
+    </div>
+  </div>
+  <img src="photo/index_photo.png" class="clean" />
+  <img src="photo/index_photo.png" class="blur" id="blurImg" />
+</section>
+<!-- 引入 JS（放 body 結尾比較好） -->
+<script src="js/index.js"></script>
+</body>
+</html>
