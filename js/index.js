@@ -265,3 +265,13 @@ window.addEventListener('click', (e) => {
     explode(touch.clientX, touch.clientY);
   });
 });
+
+const postCount = document.querySelectorAll('.post').length;
+const uniqueTags = new Set(
+    Array.from(document.querySelectorAll('.tag')).map(t => t.textContent.trim())
+);
+const followCount = 2;
+
+document.querySelector('.stat:nth-of-type(1) .value').textContent = postCount;
+document.querySelector('.stat:nth-of-type(2) .value').textContent = tagCount;
+document.querySelector('.stat:nth-of-type(3) .value').textContent = followCount;
