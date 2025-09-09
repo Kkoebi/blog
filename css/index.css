@@ -280,7 +280,6 @@ a.clicked::after {
   display: block;
   width: 100%;
   height: auto;
-  
   /* 底部漸層透明 */
   -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
   -webkit-mask-repeat: no-repeat;
