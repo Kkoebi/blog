@@ -104,7 +104,7 @@ body {
 /* 深色模式 */
 body.dark {
   --bg-gradient: linear-gradient(to bottom, #000000, #0a2342); /* 黑 → 深藍 */
-  --text-color: #d1d1d1;
+  --text-color: #222;
   --footer-bg: #0a2342;   /* 深色背景 */
   --footer-text: #d1d1d1; /* 浅文字 */
   --footer-border: rgba(255,255,255,0.1);
@@ -350,24 +350,36 @@ a.clicked::after {
 
 .main-container {
   display: grid;
-  grid-template-columns: 10% 30% 50% 10%; /* 10%-30%-50%-10% */
-  gap: 20px; /* 左右欄中間的間距（可調整） */
-  min-height: 100vh; /* 可選：撐滿螢幕 */
-  align-items: start; /* 讓兩欄上對齊 */
+  grid-template-columns: 10% 22% 1% 52% 15%; /* 五欄比例 */
+  gap: 20px;  /* 可調整的間距 */
+  align-items: start;
 }
 
 #about {
-  grid-column: 2; /* 第二欄（30%） */
+  grid-column: 2; /* 第二欄：30% */
   background: #f8f8f8;
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* 陰影 */
+}
+
+.profile-pic {
+  width: 150px;        /* 大小可調 */
+  height: 150px;       /* 保持正方形才會變圓 */
+  object-fit: cover;   /* 照片裁切填滿 */
+  border-radius: 50%;  /* 關鍵：圓形 */
+  display: block;
+  margin: 0 auto 20px; /* 置中 + 下方留空間 */
+  border: 4px solid #fff; /* 可選：白色邊框 */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 可選：小陰影 */
 }
 
 #projects {
-  grid-column: 3; /* 第三欄（50%） */
-  background: #e8e8e8;
+  grid-column: 4; /* 第四欄：40% */
+  background: #f8f8f8;
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* 陰影 */
 }
 
 @media (max-width: 768px) {
@@ -393,6 +405,16 @@ p {
   transition: color 0.5s ease;
 }
 
+footer p {
+  color: var(--footer-text);  /* 改成跟 body 的文字顏色同步 */
+  transition: color 0.5s ease;
+}
+
+#about h2, 
+#about p {
+  text-align: center;
+}
+
 hr {
   border: none;                   /* 先移除預設 */
   height: 1px;                     /* 線高 */
@@ -400,6 +422,51 @@ hr {
   transition: background-color 0.5s ease;
   margin: 20px 0;
 }
+
+.blog-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* stat 和 divider 之間的間距 */
+  margin-top: 15px;
+}
+
+.stat {
+  text-align: center;
+  flex: 1;
+}
+
+.label {
+  font-size: 14px;
+  color: #666;
+}
+
+.value {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* divider：中間那條線 */
+.divider {
+  width: 1px;
+  background: #333;
+  height: 57px; /* 線的長度可調 */
+}
+
+/* RWD：小螢幕時改直向排列 */
+@media (max-width: 600px) {
+  .blog-stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .divider {
+    width: 40%;      /* 改成橫線 */
+    height: 2px;
+  }
+}
+
 
 /* 漢堡按鈕 */
 .hamburger {
