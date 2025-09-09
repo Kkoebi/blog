@@ -349,24 +349,34 @@ a.clicked::after {
 }
 
 .main-container {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap; /* 手機小螢幕會換行 */
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 10% 30% 50% 10%; /* 10%-30%-50%-10% */
+  gap: 20px; /* 左右欄中間的間距（可調整） */
+  min-height: 100vh; /* 可選：撐滿螢幕 */
+  align-items: start; /* 讓兩欄上對齊 */
 }
 
-.content-block {
-  flex: 1 3 45%;   /* 電腦螢幕約佔 45% 寬度 */
-  min-width: 300px; /* 最小寬度，防止太小 */
+#about {
+  grid-column: 2; /* 第二欄（30%） */
   background: #f8f8f8;
   padding: 20px;
   border-radius: 10px;
 }
 
-/* 手機小螢幕時全寬 */
+#projects {
+  grid-column: 3; /* 第三欄（50%） */
+  background: #e8e8e8;
+  padding: 20px;
+  border-radius: 10px;
+}
+
 @media (max-width: 768px) {
-  .content-block {
-    flex: 1 1 100%;
+  .main-container {
+    grid-template-columns: 100%; /* 單欄 */
+  }
+
+  #about, #projects {
+    grid-column: 1;
   }
 }
 
