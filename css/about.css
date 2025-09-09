@@ -349,11 +349,24 @@ a.clicked::after {
 }
 
 .main-container {
-  display: grid;
-  grid-template-columns: 10% 22% 1% 52% 15%; /* 五欄比例 */
-  gap: 20px;  /* 可調整的間距 */
-  align-items: start;
+    display: grid;
+    grid-template-columns: 10% 22% 1% 52% 15%;
+    gap: 20px;
+    align-items: start;
 }
+
+#about {
+    grid-column: 2;
+}
+
+#projects {
+    grid-column: 4;
+}
+
+#projects article {
+    margin-bottom: 20px; /* 文章間距 */
+}
+
 
 #about {
   grid-column: 2; /* 第二欄：30% */
@@ -391,6 +404,26 @@ a.clicked::after {
     grid-column: 1;
   }
 }
+
+.columns-container {
+    display: flex;
+    gap: 20px;           /* 左右欄間距 */
+    align-items: flex-start; /* 左右欄不強制等高 */
+}
+
+/* 左右欄寬度 */
+.left-col {
+    flex: 1; 
+}
+.right-col {
+    flex: 2;
+}
+
+/* 右欄文章卡片間距 */
+.right-col .content-block {
+    margin-bottom: 20px;
+}
+
 
 h2 {
   color: var(--text-color);  /* 改成跟 body 的文字顏色同步 */
