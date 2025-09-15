@@ -104,7 +104,6 @@ body {
 /* 深色模式 */
 body.dark {
   --bg-gradient: linear-gradient(to bottom, #000000, #0a2342); /* 黑 → 深藍 */
-  --text-color: #d1d1d1;
   --footer-bg: #0a2342;   /* 深色背景 */
   --footer-text: #d1d1d1; /* 浅文字 */
   --footer-border: rgba(255,255,255,0.1);
