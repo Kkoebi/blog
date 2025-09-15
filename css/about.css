@@ -3,6 +3,10 @@ body.light {
   --text-color: #20294e;
 }
 
+body.dark {
+  --text-color: #20294e;
+}
+
 .main-container {
     display: grid;
     grid-template-columns: 10% 22% 1% 52% 15%;
