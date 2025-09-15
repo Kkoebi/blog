@@ -166,11 +166,22 @@ body.light {
     top: 40%; left: 45.6%;
     width: 260px; height: 260px;
     margin-left: -65px; margin-top: -65px;
-    border: 3px solid #fff3;
+    border: 3px solid rgba(255, 255, 255);
     border-radius: 50%;
     animation: spin 2s linear infinite;
     z-index: 9999;
   }
+
+  #asteroid {
+    width: 15px; height: 15px;
+    background: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: 0; /* 從圈圈頂端開始 */
+    left: 68%;
+    transform: translateX(-50%);
+}
+
 
   @keyframes spin {
     0% { transform: rotate(0deg);}
