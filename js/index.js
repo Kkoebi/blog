@@ -1,3 +1,10 @@
+window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+    loader.style.transition = "opacity 0.5s";
+    loader.style.opacity = 0;
+    setTimeout(() => loader.remove(), 500);
+});
+
 const body = document.body;
 const toggleBtn = document.getElementById('theme-toggle');
 
