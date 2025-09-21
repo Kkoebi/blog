@@ -8,23 +8,36 @@ body.dark {
 }
 
 .main-container {
-    display: grid;
-    grid-template-columns: 10% 22% 1% 52% 15%;
-    gap: 20px;
-    align-items: start;
+  display: flex;
+  padding: 0 10%;       /* 整體左右邊距 */
+  gap: 20px;
+}
+
+/* 左欄 About */
+.left-col {
+  flex: 1;
+}
+
+/* 右欄文章卡片 */
+.right-col {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* 卡片間距 */
+}
+
+/* 單篇文章卡片 */
+.right-col .post {
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 #about {
     grid-column: 2;
 }
 
-#projects {
-    grid-column: 4;
-}
-
-#projects article {
-    margin-bottom: 20px; /* 文章間距 */
-}
 
 
 #about {
@@ -46,12 +59,47 @@ body.dark {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 可選：小陰影 */
 }
 
-#projects {
-  grid-column: 4; /* 第四欄：40% */
+/* 單篇文章卡片 */
+.right-col .post {
   background: #f8f8f8;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* 陰影 */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* 文章資訊 */
+.post-info .post-meta {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  gap: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.post-info .post-title {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.post-info .post-article {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* 文章摘要最多三行 */
+  overflow: hidden;
+}
+
+/* RWD */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+  .left-col, .right-col {
+    flex: 1;
+  }
 }
 
 @media (max-width: 768px) {
@@ -68,19 +116,6 @@ body.dark {
     display: flex;
     gap: 20px;           /* 左右欄間距 */
     align-items: flex-start; /* 左右欄不強制等高 */
-}
-
-/* 左右欄寬度 */
-.left-col {
-    flex: 1; 
-}
-.right-col {
-    flex: 2;
-}
-
-/* 右欄文章卡片間距 */
-.right-col .content-block {
-    margin-bottom: 20px;
 }
 
 
