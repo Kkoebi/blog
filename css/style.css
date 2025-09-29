@@ -286,11 +286,6 @@ nav a {
   border-bottom: 2px solid transparent;
 }
 
-nav a:hover {
-  color: #a384bd;
-  border-bottom: 2px solid #a384bd;
-}
-
 nav a::after {
   bottom: -2px; /* 再往下移動一點，看起來更平衡 */
 }
@@ -320,7 +315,7 @@ a::after {
   bottom: 0;
   height: 2px;
   width: 0%;
-  background-color: #a384bd;
+  background-color: #ffffff;
   transition: width 0.3s ease;
 }
 
@@ -846,3 +841,4 @@ a.icon::after {
     transform: translateX(-50%);
   }
 }
+
