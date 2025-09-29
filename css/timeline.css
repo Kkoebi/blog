@@ -1,0 +1,128 @@
+.container{
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 30px;
+    color: aliceblue;
+}
+
+.container .row {
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr;
+    grid-column-gap: 40px;
+}
+
+.row .date {
+    grid-area: theDate;
+}
+
+.row .tline {
+    position: relative;
+    background-color: white;
+    grid-area: theLine;
+}
+
+.tline span {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #101010;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.5s;
+}
+
+.row .content {
+    padding: 20px;
+    background-color: rgb(0, 0, 0,0.7);
+    border: 2px solid white;
+    border-radius: 10px;
+    grid-area: theContent;
+    z-index: 1;
+}
+
+.content h2 {
+    padding-bottom: 8px;
+}
+
+.content p {
+    line-height: 1.5;
+}
+
+.row:nth-child(odd) {
+    grid-template-areas: 'theDate theLine theContent';
+}
+
+.row:nth-child(even) {
+    grid-template-areas: 'theContent theLine theDate';
+}
+
+.row .content, .row .date {
+    margin-bottom: 35px;
+}
+
+.row:nth-child(odd) .date {
+    text-align: right;
+}
+
+.date span {
+    display: inline-block;
+    padding: 10px 16px;
+    font-size: 30px;
+    font-weight: 600;
+    border-radius: 25px;
+    position: relative;
+    top: -7px;
+}
+
+.tline .last-point {
+    top: initial;
+    bottom: 0;
+}
+
+.row .last {
+    margin-bottom: 0;
+}
+
+.row:hover .tline span:not(.last-point) {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 9px 3px rgb(255, 255, 255);
+}
+
+@media(max-width: 768px) {
+    .row:nth-child(odd),
+    .row:nth-child(even) {
+        grid-template-columns: 2px 1fr;
+        grid-template-areas: 'theLine theDate' 'theLine theContent';
+    }
+
+    .row:nth-child(odd) .date {
+        text-align: left;
+    }
+
+    .row .date {
+        margin-bottom: 5px;
+    }
+
+    .row .content {
+        margin-bottom: 25px;
+    }
+
+    .row .last {
+        margin-bottom: 5px;
+    }
+}
+
+@media(max-width: 520px) {
+    .row .tline {
+        display: none;
+    }
+
+    .row:nth-child(odd),
+    .row:nth-child(even) {
+        grid-template-columns: 1fr;
+        grid-column-gap: 0;
+    }
+}
