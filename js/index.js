@@ -282,3 +282,47 @@ const followCount = 2;
 document.querySelector('.stat:nth-of-type(1) .value').textContent = postCount;
 document.querySelector('.stat:nth-of-type(2) .value').textContent = tagCount;
 document.querySelector('.stat:nth-of-type(3) .value').textContent = followCount;
+
+const postsContainer = document.getElementById('projects');
+
+// md 檔路徑清單（你也可以用 JSON 或手動列）
+const posts = [
+  { file: '/blog/my_notes/2024/post1.md', title: '第一篇筆記', date: '2024-01-01' },
+  { file: '/blog/my_notes/2024/post2.md', title: '第二篇筆記', date: '2024-01-02' },
+];
+
+posts.forEach(post => {
+  fetch(post.file)
+    .then(res => res.text())
+    .then(md => {
+      const article = document.createElement('article');
+      article.className = 'post';
+      article.innerHTML = `
+        <div class="post-info">
+          <div class="post-meta">
+            <span>${post.date}</span>
+            <span>0</span>
+            <span>0</span>
+          </div>
+          <h2 class="post-title">${post.title}</h2>
+          <div class="post-article">${marked.parse(md)}</div>
+        </div>
+      `;
+      postsContainer.appendChild(article);
+    });
+});
+
+document.querySelectorAll('.post').forEach(post => {
+  const btn = post.querySelector('.read-more');
+  const mdFile = post.dataset.md; // 每篇文章在 HTML 標記上用 data-md="/blog/my_notes/2024/post1.md"
+  const articleDiv = post.querySelector('.post-article');
+
+  btn.addEventListener('click', () => {
+    fetch(mdFile)
+      .then(res => res.text())
+      .then(md => {
+        articleDiv.innerHTML = marked.parse(md); // 展開完整文章
+        btn.style.display = 'none'; // 展開後隱藏按鈕
+      });
+  });
+});
