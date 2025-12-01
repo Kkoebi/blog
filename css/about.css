@@ -209,6 +209,10 @@ hr {
   background-color: #666;
 }
 
+.hackmd-embed-container.hidden {
+  display: none !important;
+}
+
 /* RWD：小螢幕時改直向排列 */
 @media (max-width: 600px) {
   .blog-stats {
