@@ -197,6 +197,13 @@ hr {
   background-color: #4a5ad0;
 }
 
+.post-article {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
 
 /* RWD：小螢幕時改直向排列 */
 @media (max-width: 600px) {
