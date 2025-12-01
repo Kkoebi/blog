@@ -314,7 +314,7 @@ posts.forEach(post => {
 
 document.querySelectorAll('.post').forEach(post => {
   const btn = post.querySelector('.read-more');
-  const htmlFile = post.dataset.html;
+  const htmlFile = post.dataset.html; // 確認 HTML 屬性
   const articleDiv = post.querySelector('.post-article');
 
   if (btn && htmlFile) {
@@ -322,7 +322,7 @@ document.querySelectorAll('.post').forEach(post => {
       fetch(htmlFile)
         .then(res => res.text())
         .then(html => {
-          articleDiv.innerHTML = html; // 直接把 HTML 塞進去
+          articleDiv.innerHTML = html; // 直接塞 HTML
           btn.style.display = 'none';
           articleDiv.style.display = 'block';
           articleDiv.style.webkitLineClamp = 'unset';
@@ -334,3 +334,4 @@ document.querySelectorAll('.post').forEach(post => {
     });
   }
 });
+
