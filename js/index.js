@@ -283,15 +283,23 @@ document.querySelector('.stat:nth-of-type(1) .value').textContent = postCount;
 document.querySelector('.stat:nth-of-type(2) .value').textContent = tagCount;
 document.querySelector('.stat:nth-of-type(3) .value').textContent = followCount;
 
-document.querySelectorAll('.hackmd-toggle-btn').forEach(btn => {
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM ready!");
+
+  const toggleBtns = document.querySelectorAll('.hackmd-toggle-btn');
+  toggleBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        const container = btn.nextElementSibling;
-        if (container.style.display === 'none') {
-            container.style.display = 'block';
-            btn.textContent = "📕 收起 HackMD 筆記";
-        } else {
-            container.style.display = 'none';
-            btn.textContent = "📖 展開 HackMD 筆記";
-        }
+      const container = btn.nextElementSibling; // hackmd-embed-container
+      if (!container) return;
+
+      if (container.style.display === 'none' || container.style.display === '') {
+        container.style.display = 'block';
+        btn.textContent = "📕 收起 HackMD 筆記";
+      } else {
+        container.style.display = 'none';
+        btn.textContent = "📖 展開 HackMD 筆記";
+      }
     });
+  });
 });
+
