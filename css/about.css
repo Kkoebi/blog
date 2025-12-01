@@ -181,6 +181,23 @@ hr {
   height: 57px; /* 線的長度可調 */
 }
 
+.read-more {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #20294e;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.read-more:hover {
+  background-color: #4a5ad0;
+}
+
+
 /* RWD：小螢幕時改直向排列 */
 @media (max-width: 600px) {
   .blog-stats {
