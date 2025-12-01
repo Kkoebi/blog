@@ -314,18 +314,18 @@ posts.forEach(post => {
 
 document.querySelectorAll('.post').forEach(post => {
   const btn = post.querySelector('.read-more');
-  const mdFile = post.dataset.md;
+  const htmlFile = post.dataset.html;
   const articleDiv = post.querySelector('.post-article');
 
-  console.log(btn, mdFile, articleDiv); // 測試用
-
-  if (btn && mdFile && articleDiv) {
+  if (btn && htmlFile) {
     btn.addEventListener('click', () => {
-      fetch(mdFile)
+      fetch(htmlFile)
         .then(res => res.text())
-        .then(md => {
-          articleDiv.innerHTML = marked.parse(md);
+        .then(html => {
+          articleDiv.innerHTML = html; // 直接把 HTML 塞進去
           btn.style.display = 'none';
+          articleDiv.style.display = 'block';
+          articleDiv.style.webkitLineClamp = 'unset';
         })
         .catch(err => {
           articleDiv.textContent = "文章載入失敗 😭";
