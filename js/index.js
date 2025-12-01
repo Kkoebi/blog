@@ -314,15 +314,21 @@ posts.forEach(post => {
 
 document.querySelectorAll('.post').forEach(post => {
   const btn = post.querySelector('.read-more');
-  const mdFile = post.dataset.md; // 每篇文章在 HTML 標記上用 data-md="/blog/my_notes/2024/post1.md"
+  const mdFile = post.dataset.md;
   const articleDiv = post.querySelector('.post-article');
 
-  btn.addEventListener('click', () => {
-    fetch(mdFile)
-      .then(res => res.text())
-      .then(md => {
-        articleDiv.innerHTML = marked.parse(md); // 展開完整文章
-        btn.style.display = 'none'; // 展開後隱藏按鈕
-      });
-  });
+  if (btn && mdFile) {
+    btn.addEventListener('click', () => {
+      fetch(mdFile)
+        .then(res => res.text())
+        .then(md => {
+          articleDiv.innerHTML = marked.parse(md); // 展開完整文章
+          btn.style.display = 'none'; // 展開後隱藏按鈕
+        })
+        .catch(err => {
+          articleDiv.textContent = "文章載入失敗 😭";
+          console.error(err);
+        });
+    });
+  }
 });
