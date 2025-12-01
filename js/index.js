@@ -266,17 +266,19 @@ function createExplosion(x, y) {
 
 window.addEventListener('click', (e) => {
   createExplosion(e.clientX, e.clientY);
+});
 
-  document.addEventListener('touchstart', (e) => {
-    const touch = e.touches[0];
-    explode(touch.clientX, touch.clientY);
-  });
+document.addEventListener('touchstart', (e) => {
+  const touch = e.touches[0];
+  createExplosion(touch.clientX, touch.clientY);
 });
 
 const postCount = document.querySelectorAll('.post').length;
 const uniqueTags = new Set(
     Array.from(document.querySelectorAll('.tag')).map(t => t.textContent.trim())
 );
+
+const tagCount = uniqueTags.size;
 const followCount = 2;
 
 document.querySelector('.stat:nth-of-type(1) .value').textContent = postCount;
