@@ -183,18 +183,37 @@ hr {
 
 .read-more {
   display: inline-block;
-  margin-top: 10px;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 5px;
-  background-color: #20294e;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s;
+  margin-top: 15px;
+  padding: 8px 18px;
+  border-radius: 25px;             /* 圓潤的膠囊形 */
+  background: linear-gradient(135deg, #4a5ad0, #20294e); /* 漸層色 */
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;           /* 取消 a 下劃線 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
 }
 
 .read-more:hover {
-  background-color: #4a5ad0;
+  transform: translateY(-2px) scale(1.05);  /* 浮起效果 */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #20294e, #4a5ad0); /* 反轉漸層 */
+}
+
+.read-more,
+.read-more:link,
+.read-more:visited,
+.read-more:hover,
+.read-more:active {
+  text-decoration: none; /* 取消下劃線 */
+  color: #fff;           /* 保持文字顏色一致 */
+}
+
+.read-more,
+.read-more::after {
+  text-decoration: none;
+  content: none;
 }
 
 .post-article {
