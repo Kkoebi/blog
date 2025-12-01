@@ -324,6 +324,9 @@ document.querySelectorAll('.post').forEach(post => {
         .then(md => {
           articleDiv.innerHTML = marked.parse(md); // 展開完整文章
           btn.style.display = 'none'; // 展開後隱藏按鈕
+          articleDiv.style.display = 'block';
+          articleDiv.style.webkitLineClamp = 'unset';
+
         })
         .catch(err => {
           articleDiv.textContent = "文章載入失敗 😭";
