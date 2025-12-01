@@ -266,38 +266,19 @@ function createExplosion(x, y) {
 
 window.addEventListener('click', (e) => {
   createExplosion(e.clientX, e.clientY);
-});
 
-document.addEventListener('touchstart', (e) => {
-  const touch = e.touches[0];
-  createExplosion(touch.clientX, touch.clientY);
+  document.addEventListener('touchstart', (e) => {
+    const touch = e.touches[0];
+    explode(touch.clientX, touch.clientY);
+  });
 });
 
 const postCount = document.querySelectorAll('.post').length;
 const uniqueTags = new Set(
     Array.from(document.querySelectorAll('.tag')).map(t => t.textContent.trim())
 );
-
-const tagCount = uniqueTags.size;
 const followCount = 2;
 
 document.querySelector('.stat:nth-of-type(1) .value').textContent = postCount;
 document.querySelector('.stat:nth-of-type(2) .value').textContent = tagCount;
 document.querySelector('.stat:nth-of-type(3) .value').textContent = followCount;
-
-document.querySelectorAll('.hackmd-toggle-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    // 往上找最近的 container
-    const container = btn.parentElement.querySelector('.hackmd-embed-container');
-    if (!container) return;
-
-    const isHidden = container.classList.toggle('hidden'); // 用 class 控制顯示
-    if (isHidden) {
-      btn.textContent = "📖 展開 HackMD 筆記";
-    } else {
-      btn.textContent = "📕 收起 HackMD 筆記";
-    }
-  });
-});
-
-
