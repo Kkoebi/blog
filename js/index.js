@@ -317,16 +317,15 @@ document.querySelectorAll('.post').forEach(post => {
   const mdFile = post.dataset.md;
   const articleDiv = post.querySelector('.post-article');
 
-  if (btn && mdFile) {
+  console.log(btn, mdFile, articleDiv); // 測試用
+
+  if (btn && mdFile && articleDiv) {
     btn.addEventListener('click', () => {
       fetch(mdFile)
         .then(res => res.text())
         .then(md => {
-          articleDiv.innerHTML = marked.parse(md); // 展開完整文章
-          btn.style.display = 'none'; // 展開後隱藏按鈕
-          articleDiv.style.display = 'block';
-          articleDiv.style.webkitLineClamp = 'unset';
-
+          articleDiv.innerHTML = marked.parse(md);
+          btn.style.display = 'none';
         })
         .catch(err => {
           articleDiv.textContent = "文章載入失敗 😭";
