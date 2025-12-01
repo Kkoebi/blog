@@ -180,52 +180,28 @@ document.querySelector('.stat:nth-of-type(1) .value').textContent = postCount;
 document.querySelector('.stat:nth-of-type(2) .value').textContent = uniqueTags.size;
 document.querySelector('.stat:nth-of-type(3) .value').textContent = followCount;
 
-// 動態載入 Markdown 文章
+// 動態生成文章改成 <a> 版本
 const postsContainer = document.getElementById('projects');
 const posts = [
-    { file: '/blog/my_notes/2024/post1.md', title: '第一篇筆記', date: '2024-01-01' },
-    { file: '/blog/my_notes/2024/post2.md', title: '第二篇筆記', date: '2024-01-02' }
+    { file: '/blog/my_notes/2024/post1.html', title: '第一篇筆記', date: '2024-01-01', excerpt: '這是第一篇筆記摘要...' },
+    { file: '/blog/my_notes/2024/post2.html', title: '第二篇筆記', date: '2024-01-02', excerpt: '這是第二篇筆記摘要...' }
 ];
 
 posts.forEach(post => {
-    fetch(post.file)
-        .then(res => res.text())
-        .then(md => {
-            const article = document.createElement('article');
-            article.className = 'post';
-            article.dataset.html = post.file.replace('.md', '.html'); // 對應 HTML
-            article.innerHTML = `
-                <div class="post-info">
-                    <div class="post-meta">
-                        <span>${post.date}</span>
-                        <span>0</span>
-                        <span>0</span>
-                    </div>
-                    <h2 class="post-title">${post.title}</h2>
-                    <div class="post-article">${marked.parse(md)}</div>
-                    <button class="read-more">閱讀更多 →</button>
-                </div>
-            `;
-            postsContainer.appendChild(article);
-
-            // 綁定 read-more
-            const btn = article.querySelector('.read-more');
-            const articleDiv = article.querySelector('.post-article');
-            if (btn && article.dataset.html) {
-                btn.addEventListener('click', () => {
-                    fetch(article.dataset.html)
-                        .then(res => res.text())
-                        .then(html => {
-                            articleDiv.innerHTML = html;
-                            btn.style.display = 'none';
-                            articleDiv.style.display = 'block';
-                            articleDiv.style.webkitLineClamp = 'unset';
-                        })
-                        .catch(err => {
-                            articleDiv.textContent = "文章載入失敗 😭";
-                            console.error(err);
-                        });
-                });
-            }
-        });
+    const article = document.createElement('article');
+    article.className = 'post';
+    article.innerHTML = `
+        <div class="post-info">
+            <div class="post-meta">
+                <span>${post.date}</span>
+                <span>0</span>
+                <span>0</span>
+            </div>
+            <h2 class="post-title">${post.title}</h2>
+            <div class="post-article">${post.excerpt}</div>
+            <a href="${post.file}" class="read-more">閱讀更多 →</a>
+        </div>
+    `;
+    postsContainer.appendChild(article);
 });
+
