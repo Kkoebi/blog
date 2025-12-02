@@ -1,6 +1,13 @@
-/* ===== 全域設定 ===== */
-body.light { --text-color: #20294e; }
-body.dark { --text-color: #20294e; }
+/* ===========================
+   全域設定
+=========================== */
+body.light {
+  --text-color: #20294e;
+}
+
+body.dark {
+  --text-color: #20294e;
+}
 
 h2 {
   color: var(--text-color);
@@ -15,18 +22,32 @@ p {
   transition: color 0.5s ease;
 }
 
-/* ===== 主容器 ===== */
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--text-color);
+  transition: background-color 0.5s ease;
+  margin: 20px 0;
+}
+
+/* ===========================
+   主容器
+=========================== */
 .main-container {
   display: flex;
   padding: 0 10%;
   gap: 20px;
 }
 
-.left-col { flex: 1; }
+/* 左欄：About */
+.left-col {
+  flex: 1;
+  padding: 1.5% 0;
+}
 
 #about {
   background: #f8f8f8;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
   text-align: center;
@@ -43,6 +64,7 @@ p {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+/* 右欄文章列表 */
 .right-col {
   flex: 3;
   display: flex;
@@ -50,31 +72,71 @@ p {
   gap: 20px;
 }
 
-/* ===== 單篇文章卡片 ===== */
+/* ===========================
+   Blog Stats
+=========================== */
+.blog-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.stat {
+  text-align: center;
+  flex: 1;
+}
+
+.label {
+  font-size: 14px;
+  color: #666;
+}
+
+.value {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.divider {
+  width: 1px;
+  background: #333;
+  height: 57px;
+}
+
+/* ===========================
+   單篇文章卡片 (Post)
+=========================== */
 .post {
   position: relative;
   display: flex;
-  border-radius: 12px;
   overflow: hidden;
+  border-radius: 12px;
   margin: 20px 0;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+
+  /* ⭐ 左白 → 右透明漸層背景 */
+  background: linear-gradient(
+    to right,
+    #ffffff 0%,
+    #ffffff 55%,
+    rgba(255, 255, 255, 1) 100%
+  );
 }
 
-/* 左文字 + 右圖片 */
+/* 文字區域：標題靠上、按鈕靠下 */
 .post-info {
   flex: 1 1 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* 上下分散 */
   padding: 20px;
-}
-
-.post-content {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* 標題+內文間距 */
+  justify-content: space-between;
+  gap: 12px;
+  background: transparent; /* 顯示 post 的漸層 */
 }
 
+/* 文章 Meta */
 .post-meta {
   display: flex;
   justify-content: flex-end;
@@ -83,11 +145,14 @@ p {
   color: #666;
 }
 
+/* 文章標題 */
 .post-title {
   margin: 0;
-  font-size: 18px;
+  font-size: 25px;
+  color: var(--text-color);
 }
 
+/* 摘要內容 */
 .post-article {
   font-size: 15px;
   color: #555;
@@ -96,55 +161,47 @@ p {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  flex-grow: 1;
 }
 
-/* 右側圖片 */
+/* ===========================
+   圖片區 + 左側漸層遮罩
+=========================== */
 .post-media {
   flex: 0 0 40%;
   position: relative;
+  overflow: hidden;
+  border-radius: 0 12px 12px 0;
 }
 
 .post-media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;  /* 滿版切裁 */
-  background: #f8f8f8;
+  object-fit: cover;
 }
 
-/* 中間漸層過渡 */
-.post::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 58%;       /* 漸層起點 */
-  width: 20%;      /* 漸層寬度 */
-  pointer-events: none;
-  background: linear-gradient(
-    to right,
-    #ffffff 0%,
-    rgba(255,255,255,0.7) 40%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  z-index: 5;
-}
-
-/* ===== Read More 按鈕 ===== */
+/* ===========================
+   Read More Button
+=========================== */
 .read-more {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+
   width: 120px;
   height: 38px;
+
   border-radius: 25px;
   background: linear-gradient(135deg, #4a5ad0, #20294e);
   color: #fff;
   font-weight: 600;
   font-size: 0.9rem;
   text-decoration: none;
+
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
-  align-self: flex-start; /* 保持靠左且不撐開 */
+
+  align-self: flex-start; /* 不被拉扯，保持靠左 */
 }
 
 .read-more:hover {
@@ -153,23 +210,35 @@ p {
   background: linear-gradient(135deg, #20294e, #4a5ad0);
 }
 
-/* ===== RWD ===== */
-@media (max-width: 768px) {
+/* ===========================
+   RWD
+=========================== */
+@media (max-width: 928px) {
   .main-container {
     flex-direction: column;
   }
 
   .post {
     flex-direction: column-reverse;
+    background: #ffffff;
+  }
+
+  .post-info {
+    background: #ffffff;
+    padding: 16px;
   }
 
   .post-media {
     width: 100%;
-    min-height: 180px;
+    height: 260px;
+    border-radius: 12px 12px 0 0;
   }
 
-  .post-info {
-    padding: 16px;
+  /* 手機避免漸層卡在中間 */
+  .post-media::before {
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), transparent);
   }
 }
 
