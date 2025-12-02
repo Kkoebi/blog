@@ -223,6 +223,35 @@ hr {
   overflow: hidden;
 }
 
+.post {
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: background 0.5s ease;
+}
+
+/* 放一個 ::before 做漸層到圖片的效果 */
+.post::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0)), url('photo/AIS3.png') center/cover no-repeat;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+}
+
+.post:hover::before {
+  opacity: 1;
+}
+
+.post-info {
+  position: relative;
+  z-index: 1; /* 文字在上層 */
+  padding: 1rem;
+}
+
 
 /* RWD：小螢幕時改直向排列 */
 @media (max-width: 600px) {
