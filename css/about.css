@@ -236,7 +236,7 @@ hr {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0)), url('photo/AIS3.png') center/cover no-repeat;
+  background: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0)), url('/photo/AIS3.png') center/cover no-repeat;
   opacity: 0;
   transition: opacity 0.5s ease;
   z-index: 0;
