@@ -205,3 +205,19 @@ posts.forEach(post => {
     postsContainer.appendChild(article);
 });
 
+window.addEventListener('load', () => {
+  document.querySelectorAll('.post-media').forEach(container => {
+    const img = container.querySelector('img');
+    if (img.complete) { // 如果圖片已經載入
+      adjustHeight(container, img);
+    } else {
+      img.onload = () => adjustHeight(container, img);
+    }
+  });
+});
+
+function adjustHeight(container, img) {
+  const aspectRatio = img.naturalWidth / img.naturalHeight;
+  const containerWidth = container.offsetWidth;
+  container.style.height = `${containerWidth / aspectRatio}px`;
+}
