@@ -42,15 +42,20 @@ new MutationObserver(() => {
 
 // fade-up 元素淡入
 const fadeElems = document.querySelectorAll('.fade-up');
-function checkFade() {
-    const windowBottom = window.innerHeight + window.scrollY;
-    fadeElems.forEach(elem => {
-        const elemTop = elem.offsetTop;
-        elem.classList.toggle('visible', windowBottom > elemTop + 50);
-    });
-}
-checkFade();
-window.addEventListener('scroll', checkFade);
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target); // 只觸發一次，減少負擔
+    }
+  });
+}, {
+  threshold: 0.2   // 元素進 20% 就觸發
+});
+
+fadeElems.forEach(elem => observer.observe(elem));
+
 
 // Hero 圖片模糊 + nav 滾動效果
 const blurImg = document.getElementById('blurImg');
