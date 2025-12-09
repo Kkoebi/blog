@@ -105,14 +105,12 @@ hr {
   height: 57px;
 }
 
-/* 初始不可見（往下移） */
 .fade-up {
   opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* 進入視窗時變可見＋往上浮起 */
 .fade-up.visible {
   opacity: 1;
   transform: translateY(0);
