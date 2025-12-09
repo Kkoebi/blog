@@ -92,23 +92,23 @@
 
   <!-- 右欄文章卡片 -->
   <div id="projects" class="right-col">
-    <article class="post">
-    <div class="post-info">
-      <div class="post-meta">
-        <span>2025-08-15</span>
+    <article class="post fade-up">
+      <div class="post-info">
+        <div class="post-meta">
+          <span>2025-08-15</span>
+        </div>
+        <h2 class="post-title">AIS3 pre-exam - evil-calculator write up</h2>
+        <div class="post-article">
+          evil-calculator write up Ans: AIS3{fake_flag} 進來網站後，會看到一個像計算機的東西。這裡先隨意輸入 1+1，看他會做什麼事。可以發現在我們做計算時，會送出一個 POST 請求，並且檔案是以 JSON 格式傳送，這裡我們...
+        </div>
+        <a href="/blog/my_notes/2025/evil-calculator_write_up.html" class="read-more">閱讀更多 →</a>
       </div>
-      <h2 class="post-title">AIS3 pre-exam - evil-calculator write up</h2>
-      <div class="post-article">
-        evil-calculator write up Ans: AIS3{fake_flag} 進來網站後，會看到一個像計算機的東西。這裡先隨意輸入 1+1，看他會做什麼事。可以發現在我們做計算時，會送出一個 POST 請求，並且檔案是以 JSON 格式傳送，這裡我們...
+      <div class="post-media">
+        <img src="photo/AIS3.png" alt="cover image for test">
       </div>
-      <a href="/blog/my_notes/2025/evil-calculator_write_up.html" class="read-more">閱讀更多 →</a>
-    </div>
-    <div class="post-media">
-      <img src="photo/AIS3.png" alt="cover image for test">
-    </div>
     </article>
 
-    <article class="post">
+    <article class="post fade-up">
       <div class="post-info">
         <div class="post-meta">
           <span>2025-10-15</span>
@@ -124,8 +124,7 @@
       </div>
     </article>
 
-    
-    <article class="post">
+    <article class="post fade-up">
       <div class="post-info">
         <div class="post-meta">
           <span>2025-10-15</span>
@@ -141,7 +140,7 @@
       </div>
     </article>
 
-    <article class="post">
+    <article class="post fade-up">
       <div class="post-info">
         <div class="post-meta">
           <span>2025-09-20</span>
@@ -157,7 +156,7 @@
       </div>
     </article>
 
-    <article class="post">
+    <article class="post fade-up">
       <div class="post-info">
         <div class="post-meta">
           <span>2025-09-07</span>
@@ -173,14 +172,14 @@
       </div>
     </article>
 
-    <article class="post">
+    <article class="post fade-up">
       <div class="post-info">
         <div class="post-meta">
           <span>2025-08-14</span>
         </div>
         <h2 class="post-title">ACSC CTF 2024 - Login! write up</h2>
         <div class="post-article">
-          Login write up Ans：ACSC{fake} 這題進入頁面後，是一個 Login 畫面。老方法一樣先猜 admin:admin。顯然他沒那麼笨，所以我先看看題目給的 source code。完整程式碼 在資料庫的地方他有兩筆資...
+          Login write up Ans：ACSC{fake} 這題進入頁面後，是一個 Login 畫面。老方法一樣先猜 admin:admin。顯然他沒那麼笨，所以我先看看題目給的 source code。完整程式碼 在資料庫的地方他有兩筆資料，分別是 guest 跟 user，只是 user 的密碼是 32 字元長的隨機十六進位字串。const USER_DB = {user: {username: 'user', password: crypto.randomBytes(32).toString('hex')},guest: {username: 'guest',password: 'guest'}}; 接著檢查 username 有沒有超過 6 個字元，不然就報錯。app.post('/login', (req, res) => {const 
         </div>
         <a href="/blog/my_notes/2025/ACSCCTF-Login_write_up.html" class="read-more">閱讀更多 →</a>
       </div>
@@ -189,19 +188,51 @@
       </div>
     </article>
 
-    <article class="post">
+    <article class="post fade-up">
       <div class="post-info">
         <div class="post-meta">
           <span>2025-10-15</span>
         </div>
-        <h2 class="post-title">PicoCTF 2022 - Roboto Sans</h2>
+        <h2 class="post-title">PicoCTF 2025 - 3v@l</h2>
         <div class="post-article">
-          Problem The flag is somewhere on this web application not necessarily on the website. Find it. Author: Mubarak Mikail Ans: picoCTF{Who_D03sN7_L1k5_90B0T5_718c9043} Solution: Enter the websit...
+          Problem ABC Bank's website has a loan calculator to help its clients calculate the amount they pay if they take a loan from the bank. Unfortunately, they are using an eval function to calculate the loan. Bypassing this will give you Remote Code Execution (RCE). Can you exploit the bank's calculator and read the flag? Author: Theoneste Byagutangaza Ans: picoCTF{D0nt_Use_Unsecure_f@nctions5e20166b} Solution: First, enter the website. I tried inputting 123. We can see that the result is the same as the input. According to the problem, the server uses eval, so we can input anything to achieve RCE and read files.
         </div>
-        <a href="/blog/my_notes/2025/PicoCTF_2022-Roboto_Sans.html" class="read-more">閱讀更多 →</a>
+        <a href="/blog/my_notes/2025/PicoCTF_2025-3v@l.html" class="read-more">閱讀更多 →</a>
       </div>
       <div class="post-media">
         <img src="photo/picoCTF.png" alt="cover image for test">
+      </div>
+    </article>
+
+    <article class="post fade-up">
+      <div class="post-info">
+        <div class="post-meta">
+          <span>2025-04-28</span>
+        </div>
+        <h2 class="post-title">Portswigger - File path traversal, simple case</h2>
+        <div class="post-article">
+          一樣先進入網站隨便點幾個圖片看看在 HTTP history 中會炸出什麼東西。發現在讀取網頁的時候，網頁中的檔案都會被存放在特定的路徑，所以我們丟到 Repeater 中更改路徑。直接定位到題目的目標位置顯然是不行的，所以我嘗試使用目錄遍歷的方式來嘗試看看。透過以重複回到上一層的方式來執行，直到我們找到目標位置。最後這題就結束並完成 LAB。
+        </div>
+        <a href="/blog/my_notes/2025/Portswigger-File_path_traversal_simple_case.html" class="read-more">閱讀更多 →</a>
+      </div>
+      <div class="post-media">
+        <img src="photo/portswigger.jpg" alt="cover image for test">
+      </div>
+    </article>
+
+    <article class="post fade-up">
+      <div class="post-info">
+        <div class="post-meta">
+          <span>2025-04-28</span>
+        </div>
+        <h2 class="post-title">Portswigger - traversal sequences blocked with absolute path bypass</h2>
+        <div class="post-article">
+          一樣先進入網站隨便點幾個圖片看看在 HTTP history 中會炸出什麼東西。這次跟上次一樣，我先透過 ../../ 的方式來進行攻擊，發現這次伺服器出現400的狀態碼，看來這次不是那麼地順利。不過即便如此，有時也可以透過絕對路徑來直接前往我們需要的目的地，所以我嘗試直接定位到目標位置並送出。結果就成功了，本題 LAB 也就結束了。
+        </div>
+        <a href="/blog/my_notes/2025/Portswigger-traversal_sequences_blocked_with_absolute_path_bypass.html" class="read-more">閱讀更多 →</a>
+      </div>
+      <div class="post-media">
+        <img src="photo/portswigger.jpg" alt="cover image for test">
       </div>
     </article>
   </div>

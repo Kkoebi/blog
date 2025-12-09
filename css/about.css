@@ -104,6 +104,24 @@ hr {
   height: 57px;
 }
 
+/* 初始不可見（往下移） */
+.fade-up {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* 進入視窗時變可見＋往上浮起 */
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.post:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+}
+
 /* ===========================
    單篇文章卡片 (Post)
 =========================== */
@@ -112,11 +130,13 @@ hr {
   display: flex;
   overflow: hidden;
   border-radius: 12px;
-
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  background: #f8f8f8;
+  transition: transform 1s ease, box-shadow 1s ease;
+}
 
-  /* ⭐ 左白 → 右透明漸層背景 */
-  background: #f8f8f8
+.post:last-child {
+  margin-bottom: 20px;
 }
 
 /* 文字區域：標題靠上、按鈕靠下 */
@@ -161,7 +181,7 @@ hr {
 
 .post-media {
   flex: 0 0 40%;
-  aspect-ratio: 3 / 2; /* 固定 3:2 容器 */
+  height: 288px;         /* 統一高度 */
   overflow: hidden;
   border-radius: 0 12px 12px 0;
 }
@@ -169,11 +189,8 @@ hr {
 .post-media img {
   width: 100%;
   height: 100%;
-  display: block;
+  object-fit: cover;     /* 填滿區塊、視覺一致 */
 }
-
-
-
 
 /* ===========================
    Read More Button
