@@ -14,27 +14,6 @@ main {
   transition: color 0.5s ease, box-shadow 0.5s ease, background 0.8s ease;
 }
 
-h2 {
-  color: var(--text-color);  /* 改成跟 body 的文字顏色同步 */
-  transition: color 0.5s ease;
-  margin-bottom: 20px;
-}
-
-p {
-  line-height: 1.6;
-  font-size: 1.1rem;
-  color: var(--text-color);  /* 改成跟 body 的文字顏色同步 */
-  transition: color 0.5s ease;
-}
-
-hr {
-  border: none;                   /* 先移除預設 */
-  height: 1px;                     /* 線高 */
-  background-color: var(--text-color);  /* 跟 body 文字顏色同步 */
-  transition: background-color 0.5s ease;
-  margin: 20px 0;
-}
-
 .timeline {
   margin: 5em auto;
   max-width: 34.15em;

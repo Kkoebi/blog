@@ -1,3 +1,23 @@
+/* 額外深淺模式調整 */
+body.dark .container { color: #ffffff; }
+body.light .container { color: #20294e; }
+
+body.dark .row .tline { background-color: #ffffff; }
+body.light .row .tline { background-color: #20294e; }
+
+body.dark .tline span,
+body.dark .tline .last-point {
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+body.light .tline span,
+body.light .tline .last-point {
+    background-color: #20294e;
+    border-color: #20294e;
+}
+
+.content p { color: #000; }
+
 .container{
     max-width: 1200px;
     margin: 20px auto;

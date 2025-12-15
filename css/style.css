@@ -103,6 +103,7 @@ body {
 
 /* 深色模式 */
 body.dark {
+  --text-color: #d1d1d1;
   --bg-gradient: linear-gradient(to bottom, #000000, #0a2342); /* 黑 → 深藍 */
   --footer-bg: #0a2342;   /* 深色背景 */
   --footer-text: #d1d1d1; /* 浅文字 */
@@ -321,7 +322,7 @@ a::after {
 
 a:hover,
 a.clicked {
-  color: #a384bd; /* 紫色 */
+  color: #7a90ec;
 }
 
 a:hover::after,
@@ -497,7 +498,7 @@ nav.scrolled .hamburger div {
 }
 
 .mobile-menu.active a {
-  color: var(--mobile-scrolled-color);
+  color: var(--mobile-text-color);    /* 展開且未捲動：淺色文字 */
 }
 
 .mobile-menu.active.scrolled a {
@@ -685,12 +686,12 @@ a.icon::after {
 
 @media (min-width: 769px) {
   nav a::after {
-    background-color: #d1d1d1;
+    background-color: #ffffff;
   }
 
   nav a:hover,
   nav a.clicked {
-    color: #d1d1d1;
+    color: #ffffff;
   }
 }
 
@@ -841,4 +842,3 @@ a.icon::after {
     transform: translateX(-50%);
   }
 }
-

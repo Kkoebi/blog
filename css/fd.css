@@ -1,12 +1,37 @@
+/* 淺色模式下 Friend Card 調整 */
+body.light .friend-card {
+    background: rgba(255, 255, 255, 0.4);
+}
+body.light .friend-card::before,
+body.light .friend-card::after,
+body.light .friend-card span.line-left,
+body.light .friend-card span.line-right {
+    background: #000;
+}
+body.light .friend-card h3, .friend-card p, .friend-card h2, .friend-card hr {
+    color: #20294e;
+}
+body.light .friend-card p {
+    color: #333;
+}
+
+/* FD page：a 底線顏色跟深淺色走（覆蓋 style.css 的 a::after 白色） */
+body.light .friends-container a::after {
+  background-color: #20294e; /* 淺色：深藍底線 */
+}
+
+body.dark .friends-container a::after {
+  background-color: #ffffff; /* 深色：白底線 */
+}
+
 h2 {
     padding: 40px 100px;
-    color: #fff;
 }
 
 hr {
     width: 87%;
     margin: 0 auto; /* 左右自動邊距置中 */
-    border: 1px solid #ccc; /* 線條顏色 */
+    border: 1px solid; /* 線條顏色 */
 }
 
 .friends-container {
@@ -119,7 +144,6 @@ hr {
   display: inline-block;
   padding: 8px 16px;
   border-radius: 20px;
-  color: #fff;
   font-weight: bold;
   text-decoration: none;
   transition: background 0.3s ease;

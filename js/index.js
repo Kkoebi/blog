@@ -65,17 +65,10 @@ const nav = document.querySelector("nav");
 
 window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
+    // 模糊 Hero 圖片，切換導覽列和手機選單樣式
     blurImg.style.filter = `blur(${Math.min(scrollY / 60, 4)}px)`;
     nav.classList.toggle("scrolled", scrollY > 50);
     mobileMenu.classList.toggle("scrolled", scrollY > 50);
-
-    mobileLinks.forEach(link => {
-        if (body.classList.contains('light')) {
-            link.style.color = scrollY > 50 ? 'var(--text-color)' : 'var(--text-color-light)';
-        } else {
-            link.style.color = 'var(--text-color)';
-        }
-    });
 });
 
 // 手機選單
