@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XML's Blog - About me</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/about.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>XML's Blog</title>
+<!-- 引入 CSS -->
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class="dark">
-    <div id="loader">
+  <div id="loader">
         <div class="orbit-container">
             <div id="moon"></div>
             <div id="ring">
@@ -20,224 +21,109 @@
             <span>L</span><span>o</span><span>a</span><span>d</span><span>i</span><span>n</span><span>g</span>
         </div>
     </div>
-
-    <button id="back-to-top" class="back-to-top">↑</button>
-    <button id="theme-toggle" class="dark">🌙</button>
-    <div id="loader-overlay"></div>
-    <div class="line-container" aria-hidden="true"></div>
-    <div class="explosion-container"></div>
-    <nav id="navbar">
-        <div class="hamburger" id="hamburger" aria-label="切換選單" role="button" tabindex="0">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    
-        <div class="logo">XML's Blog</div>
-    
-        <div class="nav-links">
-            <a href="/blog/index.html">Home</a>
-            <a href="/blog/notes.html">Notes</a>
-            <a href="/blog/timeline.html">Timeline</a>
-            <a href="/blog/friends.html">Friends</a>
-        </div>
-    </nav>
-
-    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-        <a href="/blog/index.html">Home</a>
-        <a href="/blog/notes.html">Notes</a>
-        <a href="/blog/timeline.html">Timeline</a>
-        <a href="/blog/friends.html">Friends</a>
-    </div>
-
-    <section class="hero" id="hero">
-        <div class="line-wrapper">
-            <div class="center-line"></div>
-            <div class="half-line top"></div>
-            <div class="half-line bottom"></div>
-            <div class="hero-text">
-                <h1>About me</h1>
-                <h6>好色喔，剛認識就想扒光我個資///（發病中）</h6>
-            </div>
-        </div>
-        <img src="photo/index_photo.png" class="clean" />
-        <img src="photo/index_photo.png" class="blur" id="blurImg" />
-    </section>
-
-<main class="main-container">
-  <!-- 左欄 About -->
-  <div class="left-col fade-up">
-    <div id="about" class="content-block">
-      <img src="photo/about_me.png" alt="joker" class="profile-pic">
-      <h2>XML</h2>
-      <p>NTOU CSIE · CTF player · WEB</p>
-      <div class="blog-stats">
-        <div class="stat">
-          <div class="label">POST</div>
-          <div class="value">26</div>
-        </div>
-        <div class="divider"></div>
-        <div class="stat">
-          <div class="label">Tags</div>
-          <div class="value">12</div>
-        </div>
-        <div class="divider"></div>
-        <div class="stat">
-          <div class="label">Follows</div>
-          <div class="value">2</div>
-        </div>
-      </div>
-    </div>
+<button id="back-to-top" class="back-to-top">↑</button>
+<button id="theme-toggle" class="dark">🌙</button>
+<div id="loader-overlay"></div>
+<div class="line-container" aria-hidden="true"></div>
+<div class="explosion-container"></div>
+<nav id="navbar">
+  <div class="hamburger" id="hamburger" aria-label="切換選單" role="button" tabindex="0">
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 
-  <!-- 右欄文章卡片 -->
-  <div id="projects" class="right-col">
-    <article class="post fade-up">
-      <div class="post-info">
-        <div class="post-meta">
-          <span>2025-08-15</span>
-        </div>
-        <h2 class="post-title">AIS3 pre-exam - evil-calculator write up</h2>
-        <div class="post-article">
-          evil-calculator write up Ans: AIS3{fake_flag} 進來網站後，會看到一個像計算機的東西。這裡先隨意輸入 1+1，看他會做什麼事。可以發現在我們做計算時，會送出一個 POST 請求，並且檔案是以 JSON 格式傳送，這裡我們...
-        </div>
-        <a href="/blog/my_notes/2025/evil-calculator_write_up.html" class="read-more">閱讀更多 →</a>
-      </div>
-      <div class="post-media">
-        <img src="photo/AIS3.png" alt="cover image for test">
-      </div>
-    </article>
+  <div class="logo">XML's Blog</div>
 
-    <article class="post fade-up">
-      <div class="post-info">
-        <div class="post-meta">
-          <span>2025-10-15</span>
-        </div>
-        <h2 class="post-title">PicoCTF 2022 - Roboto Sans write up</h2>
-        <div class="post-article">
-          Problem The flag is somewhere on this web application not necessarily on the website. Find it. Author: Mubarak Mikail Ans: picoCTF{Who_D03sN7_L1k5_90B0T5_718c9043} Solution: Enter the websi... 
-        </div>
-        <a href="/blog/my_notes/2025/PicoCTF_2022-Roboto_Sans.html" class="read-more">閱讀更多 →</a>
-      </div>
-      <div class="post-media">
-        <img src="photo/picoCTF.png" alt="cover image for test">
-      </div>
-    </article>
-
-    <article class="post fade-up">
-      <div class="post-info">
-        <div class="post-meta">
-          <span>2025-10-15</span>
-        </div>
-        <h2 class="post-title">PicoCTF 2022 - Power Cookie write up</h2>
-        <div class="post-article">
-          Problem Can you get the flag? Go to this website and see what you can discover. Author: LT 'syreal' Jones Ans: picoCTF{gr4d3_A_c00k13_0d351e23} Solution: Enter the website...
-        </div>
-        <a href="/blog/my_notes/2025/PicoCTF_2022-Power_Cookie.html" class="read-more">閱讀更多 →</a>
-      </div>
-      <div class="post-media">
-        <img src="photo/picoCTF.png" alt="cover image for test">
-      </div>
-    </article>
-
-    <article class="post fade-up">
-      <div class="post-info">
-        <div class="post-meta">
-          <span>2025-09-20</span>
-        </div>
-        <h2 class="post-title">Squ1rrel CTF 2025 - Go-getter write up</h2>
-        <div class="post-article">
-          go-getter write up Ans：squ1rrel{fake_flag} 進入網站看看。可以看到網頁中有兩個選項，一個可以查看 GOpher，另一個則是直接去看 flag，這裡我選擇看看 GOpher 的話，他會幹啥。可以發現就是隨...
-        </div>
-        <a href="/blog/my_notes/2025/Squ1rrel_CTF_2025_Go-getter.html" class="read-more">閱讀更多 →</a>
-      </div>
-      <div class="post-media">
-        <img src="photo/Squ1rrel.png" alt="cover image for test">
-      </div>
-    </article>
-
-    <article class="post fade-up">
-      <div class="post-info">
-        <div class="post-meta">
-          <span>2025-09-07</span>
-        </div>
-        <h2 class="post-title">Hack The Box Web - trial by fire write up</h2>
-        <div class="post-article">
-          web trial by fire write up 首先先進入網站。這裡他會要我們輸入名字來開遊戲，所以我輸入個名字進去看看。所以我嘗試玩玩一場看看。結束後被導向到一個看起來就是一般的戰鬥結算數據的地方，看起來沒甚麼東西，所以我一樣去看原始碼。index.html 完整原始碼 這裡只是一般的介面設定，只不過在裡面有一段長這樣：In a land of burning rivers and searing heat, the Fire Drake stands guard over the Emberstone. Many have sought its power; none have prevailed.Legends speak of ancient template scrolls—arcane writi
-        </div>
-        <a href="/blog/my_notes/2025/Hack_The_Box_Web-trial_by_fire_write up.html" class="read-more">閱讀更多 →</a>
-      </div>
-      <div class="post-media">
-        <img src="photo/HTB.png" alt="cover image for test">
-      </div>
-    </article>
-
-    <article class="post fade-up">
-      <div class="post-info">
-        <div class="post-meta">
-          <span>2025-08-14</span>
-        </div>
-        <h2 class="post-title">ACSC CTF 2024 - Login! write up</h2>
-        <div class="post-article">
-          Login write up Ans：ACSC{fake} 這題進入頁面後，是一個 Login 畫面。老方法一樣先猜 admin:admin。顯然他沒那麼笨，所以我先看看題目給的 source code。完整程式碼 在資料庫的地方他有兩筆資料，分別是 guest 跟 user，只是 user 的密碼是 32 字元長的隨機十六進位字串。const USER_DB = {user: {username: 'user', password: crypto.randomBytes(32).toString('hex')},guest: {username: 'guest',password: 'guest'}}; 接著檢查 username 有沒有超過 6 個字元，不然就報錯。app.post('/login', (req, res) => {const 
-        </div>
-        <a href="/blog/my_notes/2025/ACSCCTF-Login_write_up.html" class="read-more">閱讀更多 →</a>
-      </div>
-      <div class="post-media">
-        <img src="photo/ACSCCTF.png" alt="cover image for test">
-      </div>
-    </article>
-
-    <article class="post fade-up">
-      <div class="post-info">
-        <div class="post-meta">
-          <span>2025-10-15</span>
-        </div>
-        <h2 class="post-title">PicoCTF 2025 - 3v@l</h2>
-        <div class="post-article">
-          Problem ABC Bank's website has a loan calculator to help its clients calculate the amount they pay if they take a loan from the bank. Unfortunately, they are using an eval function to calculate the loan. Bypassing this will give you Remote Code Execution (RCE). Can you exploit the bank's calculator and read the flag? Author: Theoneste Byagutangaza Ans: picoCTF{D0nt_Use_Unsecure_f@nctions5e20166b} Solution: First, enter the website. I tried inputting 123. We can see that the result is the same as the input. According to the problem, the server uses eval, so we can input anything to achieve RCE and read files.
-        </div>
-        <a href="/blog/my_notes/2025/PicoCTF_2025-3v@l.html" class="read-more">閱讀更多 →</a>
-      </div>
-      <div class="post-media">
-        <img src="photo/picoCTF.png" alt="cover image for test">
-      </div>
-    </article>
-
-    <article class="post fade-up">
-      <div class="post-info">
-        <div class="post-meta">
-          <span>2025-04-28</span>
-        </div>
-        <h2 class="post-title">Portswigger - File path traversal, simple case</h2>
-        <div class="post-article">
-          一樣先進入網站隨便點幾個圖片看看在 HTTP history 中會炸出什麼東西。發現在讀取網頁的時候，網頁中的檔案都會被存放在特定的路徑，所以我們丟到 Repeater 中更改路徑。直接定位到題目的目標位置顯然是不行的，所以我嘗試使用目錄遍歷的方式來嘗試看看。透過以重複回到上一層的方式來執行，直到我們找到目標位置。最後這題就結束並完成 LAB。
-        </div>
-        <a href="/blog/my_notes/2025/Portswigger-File_path_traversal_simple_case.html" class="read-more">閱讀更多 →</a>
-      </div>
-      <div class="post-media">
-        <img src="photo/portswigger.jpg" alt="cover image for test">
-      </div>
-    </article>
-
-    <article class="post fade-up">
-      <div class="post-info">
-        <div class="post-meta">
-          <span>2025-04-28</span>
-        </div>
-        <h2 class="post-title">Portswigger - traversal sequences blocked with absolute path bypass</h2>
-        <div class="post-article">
-          一樣先進入網站隨便點幾個圖片看看在 HTTP history 中會炸出什麼東西。這次跟上次一樣，我先透過 ../../ 的方式來進行攻擊，發現這次伺服器出現400的狀態碼，看來這次不是那麼地順利。不過即便如此，有時也可以透過絕對路徑來直接前往我們需要的目的地，所以我嘗試直接定位到目標位置並送出。結果就成功了，本題 LAB 也就結束了。
-        </div>
-        <a href="/blog/my_notes/2025/Portswigger-traversal_sequences_blocked_with_absolute_path_bypass.html" class="read-more">閱讀更多 →</a>
-      </div>
-      <div class="post-media">
-        <img src="photo/portswigger.jpg" alt="cover image for test">
-      </div>
-    </article>
+  <div class="nav-links">
+    <a href="/blog/about_me.html">About</a>
+    <a href="/blog/notes.html">Notes</a>
+    <a href="/blog/timeline.html">Timeline</a>
+    <a href="/blog/friends.html">Friends</a>
   </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="/blog/about_me.html">About</a>
+  <a href="/blog/notes.html">Notes</a>
+  <a href="/blog/timeline.html">Timeline</a>
+  <a href="/blog/friends.html">Friends</a>
+</div>
+
+<section class="hero" id="hero">
+  <div class="line-wrapper">
+    <div class="center-line"></div>
+    <div class="half-line top"></div>
+    <div class="half-line bottom"></div>
+    <div class="hero-text">
+      <h1>Welcome to XML's Blog</h1>
+      <h6>這個人很懶，甚麼也沒有留下......</h6>
+    </div>
+  </div>
+  <img src="photo/index_photo.png" class="clean" />
+  <img src="photo/index_photo.png" class="blur" id="blurImg" />
+</section>
+
+<main>
+  <section id="about" class="fade-up">
+    <h2>關於我</h2>
+    <p>很嗨、很ㄅㄧㄤˋ、很吵，沒有甚麼生活技能的傢伙（just kidding haha:D）<br>
+      沒甚麼特點，就是過得越來越雖小 555<br><br>
+      標準型 INTP，只會跟熟的人變 E，其他時間看到人就是三十六計先走為上策，不要靠近我，我很怕生 555（X<br><br>
+      比起資安，<s>我更愛機器學習醬</s>，反正就是有小碰 Web 一些些，但目前都是在 Machine Learning 看守所裡呆著，不知道甚麼時候會出獄（下輩子<br><br>
+      興趣愛好沒甚麼特別的，畫畫、剪輯、當飯圈的一份子，然後玩點前端開發（yeah 所以才有這個 Blog）<br>
+    </p>
+    <br><hr><br>
+  </section>
+  <section id="projects" class="fade-up">
+    <h2>題外話</h2>
+    <p>
+      原本超簡單的小 blog 裡有隻倉鼠，結果我可愛的朋友們居然真的跑去抓倉鼠，我感動到爆哭 QwQ，謝謝你們相信倉鼠的存在。<br><br>
+      你們都太可愛了，來給我摸摸！想抓倉鼠嗎？點這裡 &rarr; <a href="https://kkoebi.github.io/meowmeow.github.io/">我也想要一隻倉鼠！</a>
+    </p>
+    <br><hr><br>
+  </section>
+  <section id="contact" class="fade-up">
+    <h2>歷程（詳細在這！&rarr; <a href="./timeline.html">傳送門</a>）</h2>
+    <div class="timeline">
+      <div class="checkpoint">
+        <div>
+          <h2>國中時期</h2>
+          <p>還在拿粉紅按鍵式手機唱 butterfly ，並成為我推的奴隸。</p>
+        </div>
+      </div>
+      <div class="checkpoint">
+        <div>
+          <h2>高一</h2>
+          <p>
+            上學期抱怨資處科為什麼要讀財金，下學期逐漸接受事實並打算讀會計系，但遇到恩師所以開始進入資安QWQ。
+          </p>
+        </div>
+      </div>
+      <div class="checkpoint">
+        <div>
+          <h2>高二</h2>
+          <p>開始接觸每個領域，最終選擇紅隊方向，但沒有接觸很深，大概蜻蜓點水ㄅ（菜就多練）。</p>
+        </div>
+      </div>
+      <div class="checkpoint">
+        <div>
+          <h2>高三</h2>
+          <p>
+            上學期去特選被電神電，下學期鬼轉去當專案人，目前正在跟機器學習當好朋友。
+          </p>
+        </div>
+      </div>
+    </div>
+    <br><hr><br>
+  </section>
+  <section id="end" class="fade-up">
+    <h2>最後小節</h2>
+    <p>
+      我愛機器學習，我愛模型們，看在我這麼愛你們的份上，均方誤差可以降了沒:DDDDD。
+    </p>
+  </section>
 </main>
-
 <footer class="site-footer">
   <div class="footer-content">
     <p>&copy; XML's Blog. All rights reserved. 如有內容錯誤或網站出錯，請聯繫我。</p>
@@ -249,8 +135,7 @@
     </div>
   </div>
 </footer>
-<!-- 引入 JS（放 body 結尾比較好） -->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<!-- 引入 JS -->
 <script src="js/index.js"></script>
 </body>
 </html>
