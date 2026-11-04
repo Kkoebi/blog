@@ -1,0 +1,25 @@
+/* Dark reading surface for the original HackMD exports. */
+:root {color-scheme:dark;}
+html,body {background:#0a0b10 !important;color:#ddd8e7 !important;}
+body {font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans TC',sans-serif !important;}
+#doc.markdown-body {max-width:930px;margin:0 auto;padding:104px 34px 100px;background:#11131a !important;color:#ddd8e7 !important;box-shadow:0 0 0 1px #292837;border-radius:0 0 18px 18px;line-height:1.85}
+#doc h1,#doc h2,#doc h3,#doc h4,#doc h5,#doc strong,#doc b,#doc table th {color:#f2ecfa !important;}
+#doc p,#doc li,#doc ul,#doc ol,#doc table td {color:#c5becd !important;}
+#doc a {color:#c8b4ff !important;}
+#doc a:hover {color:#ecddff !important;}
+#doc blockquote {border-left-color:#9076b8;color:#afa4bc;background:#171520;padding:10px 16px}
+#doc pre,#doc code,#doc .hljs {background:#0c0e15 !important;color:#e2dcf0 !important;border-color:#303040 !important;}
+#doc :not(pre)>code {background:#242030 !important;color:#ded0ff !important;padding:2px 5px;border-radius:4px;}
+#doc table tr,#doc table th,#doc table td {background:#141620 !important;border-color:#393541 !important;}
+#doc hr {border-color:#3c344b}
+#doc img {max-width:100%;height:auto;border-radius:9px;}
+.article-toolbar {position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,11,16,.92);backdrop-filter:blur(14px);border-bottom:1px solid #2b2837;display:flex;gap:25px;align-items:center;justify-content:space-between;padding:11px max(24px,calc((100vw - 1110px)/2));min-height:56px}
+.article-toolbar .article-brand {color:#f0eaf8;font-size:15px;font-weight:750;letter-spacing:-.03em;text-decoration:none}
+.article-toolbar .article-brand span {color:#c8b4ff}
+.article-toolbar .article-back {font-size:12px;text-decoration:none;color:#c8b4ff;font-weight:700}
+.article-toolbar .article-back:hover {color:white}
+.explosion-container {position:fixed;inset:0;z-index:400;pointer-events:none;overflow:hidden}
+.explosion-box {position:absolute;border:1.6px solid #c5aeff;background:rgba(197,174,255,.04);border-radius:2px;animation:explodeFade 1.1s ease-out forwards;pointer-events:none}
+@keyframes explodeFade {0%{opacity:.95;transform:translate(0,0) rotate(0) scale(1)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--dr)) scale(.34)}}
+@media(max-width:670px){#doc.markdown-body {padding:82px 17px 60px;box-shadow:none;border-radius:0} .article-toolbar{padding:11px 17px} .article-toolbar .article-back{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.explosion-box{animation-duration:.01ms}}
