@@ -1,79 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XML's Blog - Notes</title>
-<!-- 引入 CSS -->
-<link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body class="dark">
-  <div id="loader">
-        <div class="orbit-container">
-            <div id="moon"></div>
-            <div id="ring">
-                <div id="asteroid"></div>
-            </div>
-        </div>
-        <div class="loading-text">
-            <span>L</span><span>o</span><span>a</span><span>d</span><span>i</span><span>n</span><span>g</span>
-        </div>
-    </div>
-<button id="back-to-top" class="back-to-top">↑</button>
-<button id="theme-toggle" class="dark">🌙</button>
-<div id="loader-overlay"></div>
-<div class="line-container" aria-hidden="true"></div>
-<div class="explosion-container"></div>
-<nav id="navbar">
-        <div class="hamburger" id="hamburger" aria-label="切換選單" role="button" tabindex="0">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    
-        <div class="logo">XML's Blog</div>
-    
-        <div class="nav-links">
-            <a href="/blog/index.html">Home</a>
-            <a href="/blog/about_me.html">About</a>
-            <a href="/blog/timeline.html">Timeline</a>
-            <a href="/blog/friends.html">Friends</a>
-        </div>
-    </nav>
-
-    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-        <a href="/blog/index.html">Home</a>
-        <a href="/blog/about_me.html">About</a>
-        <a href="/blog/timeline.html">Timeline</a>
-        <a href="/blog/friends.html">Friends</a>
-    </div>
-
-<section class="hero" id="hero">
-  <div class="line-wrapper">
-    <div class="center-line"></div>
-    <div class="half-line top"></div>
-    <div class="half-line bottom"></div>
-    <div class="hero-text">
-      <h1>404 Not Found...QQ</h1>
-      <h6>這個人很懶，甚麼也沒有留下......</h6>
-    </div>
-  </div>
-  <img src="photo/index_photo.png" class="clean" />
-  <img src="photo/index_photo.png" class="blur" id="blurImg" />
-</section>
-<footer class="site-footer">
-  <div class="footer-content">
-    <p>&copy; XML's Blog. All rights reserved. 如有內容錯誤或網站出錯，請聯繫我。</p>
-    <div class="social-icons">
-      <a href="https://github.com/Kkoebi" class="icon" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.instagram.com/mio._816" class="icon" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="mailto:alice0034927948@gmail.com" target="_blank" class="icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://discord.com/users/mio._813" class="icon" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
-    </div>
-  </div>
-</footer>
-<!-- 引入 JS（放 body 結尾比較好） -->
-<script src="js/index.js"></script>
-</body>
-</html>
+<html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090a0e"><meta name="description" content="XML 的個人部落格，記錄 Web、CTF 與技術筆記。"><title>Notes | XML's Blog</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="css/style.css"></head><body>
+<a class="skip-link" href="#main">跳至主要內容</a><div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+<header class="site-header" id="site-header"><div class="header-inner">
+<a class="brand" href="index.html" aria-label="XML’s Blog 首頁"><span class="brand-mark">X<span>.</span></span><span class="brand-name">XML<span class="brand-sub"> / PERSONAL SPACE</span></span></a>
+<nav class="desktop-nav" aria-label="主選單"><a href="index.html" class="nav-link " >Home</a><a href="about_me.html" class="nav-link " >About</a><a href="notes.html" class="nav-link is-active" aria-current="page">Notes</a><a href="timeline.html" class="nav-link " >Timeline</a><a href="friends.html" class="nav-link " >Friends</a></nav>
+<a class="header-github" href="https://github.com/Kkoebi" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+<button class="menu-button" id="menu-button" aria-label="開啟選單" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button>
+</div><nav class="mobile-nav" id="mobile-nav" aria-label="手機選單" hidden><a href="index.html" class="nav-link " >Home</a><a href="about_me.html" class="nav-link " >About</a><a href="notes.html" class="nav-link is-active" aria-current="page">Notes</a><a href="timeline.html" class="nav-link " >Timeline</a><a href="friends.html" class="nav-link " >Friends</a></nav></header><main id="main" class="page-main"><section class="page-intro maxwidth"><p class="section-kicker">NOTES / ARCHIVE</p><h1>Notes<span class="accent-dot">.</span></h1><p>CTF write-ups、網頁研究與各種隨手記錄。慢慢整理，慢慢累積。</p><div class="page-intro-mark" aria-hidden="true">N° 02</div></section>
+<section class="section maxwidth notes-section"><div class="filter-toolbar"><label class="search-box"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.2"/><path d="m15.5 15.5 4.5 4.5"/></svg><span class="sr-only">搜尋筆記</span><input id="search-input" type="search" placeholder="Search articles..." autocomplete="off"></label><div class="filter-chips" id="filter-chips" aria-label="文章分類"><button type="button" class="chip active" data-filter="all" aria-pressed="true">All <span>9</span></button><button type="button" class="chip" data-filter="PicoCTF" aria-pressed="false">PicoCTF</button><button type="button" class="chip" data-filter="AIS3" aria-pressed="false">AIS3</button><button type="button" class="chip" data-filter="CTF" aria-pressed="false">CTF</button><button type="button" class="chip" data-filter="Hack The Box" aria-pressed="false">Hack The Box</button><button type="button" class="chip" data-filter="PortSwigger" aria-pressed="false">PortSwigger</button></div></div><div class="results-label" id="results-label" aria-live="polite">Showing 9 notes</div><div class="entries-grid notes-grid" id="notes-grid"><article class="entry-card  reveal" data-search="picoctf 2022 - roboto sans write up picoctf problem the flag is somewhere on this web application not necessarily on the website. find it. author: mubarak mikail ans: picoctf{who_d03sn7_l1k5_90b0t5_718c9043} solution: enter the websi..." data-category="PicoCTF">
+<a class="entry-image" href="my_notes/2025/PicoCTF_2022-Roboto_Sans.html" aria-label="閱讀 PicoCTF 2022 - Roboto Sans write up"><img src="photo/picoCTF.png" alt="PicoCTF 文章封面" loading="lazy"></a>
+<div class="entry-body"><div class="entry-meta"><span class="category-label">PicoCTF</span><time datetime="2025-10-15">2025-10-15</time></div><h3><a href="my_notes/2025/PicoCTF_2022-Roboto_Sans.html">PicoCTF 2022 - Roboto Sans write up</a></h3><p class="entry-excerpt">Problem The flag is somewhere on this web application not necessarily on the website. Find it. Author: Mubarak Mikail Ans: picoCTF{Who_D03sN7_L1k5_90B0T5_718c9043} Solution: Enter the websi...</p><a href="my_notes/2025/PicoCTF_2022-Roboto_Sans.html" class="entry-link">Read article <span aria-hidden="true">↗</span></a></div></article><article class="entry-card  reveal" data-search="picoctf 2022 - power cookie write up picoctf problem can you get the flag? go to this website and see what you can discover. author: lt &#x27;syreal&#x27; jones ans: picoctf{gr4d3_a_c00k13_0d351e23} solution: enter the website..." data-category="PicoCTF">
+<a class="entry-image" href="my_notes/2025/PicoCTF_2022-Power_Cookie.html" aria-label="閱讀 PicoCTF 2022 - Power Cookie write up"><img src="photo/picoCTF.png" alt="PicoCTF 文章封面" loading="lazy"></a>
+<div class="entry-body"><div class="entry-meta"><span class="category-label">PicoCTF</span><time datetime="2025-10-15">2025-10-15</time></div><h3><a href="my_notes/2025/PicoCTF_2022-Power_Cookie.html">PicoCTF 2022 - Power Cookie write up</a></h3><p class="entry-excerpt">Problem Can you get the flag? Go to this website and see what you can discover. Author: LT &#x27;syreal&#x27; Jones Ans: picoCTF{gr4d3_A_c00k13_0d351e23} Solution: Enter the website...</p><a href="my_notes/2025/PicoCTF_2022-Power_Cookie.html" class="entry-link">Read article <span aria-hidden="true">↗</span></a></div></article><article class="entry-card  reveal" data-search="picoctf 2025 - 3v@l picoctf problem abc bank&#x27;s website has a loan calculator to help its clients calculate the amount they pay if they take a loan from the bank. unfortunately, they are using an eval function to calculate the loan. bypassing this will give you remote code execution (rce). can you exploit the bank&#x27;s calculator and read the flag? author: theoneste byagutangaza ans: picoctf{d0nt_use_unsecure_f@nctions5e20166b} solution: first, enter the website. i tried inputting 123. we can see that the result is the same as the input. according to the problem, the server uses eval, so we can input anything to achieve rce and read files." data-category="PicoCTF">
+<a class="entry-image" href="my_notes/2025/PicoCTF_2025-3v@l.html" aria-label="閱讀 PicoCTF 2025 - 3v@l"><img src="photo/picoCTF.png" alt="PicoCTF 文章封面" loading="lazy"></a>
+<div class="entry-body"><div class="entry-meta"><span class="category-label">PicoCTF</span><time datetime="2025-10-15">2025-10-15</time></div><h3><a href="my_notes/2025/PicoCTF_2025-3v@l.html">PicoCTF 2025 - 3v@l</a></h3><p class="entry-excerpt">Problem ABC Bank&#x27;s website has a loan calculator to help its clients calculate the amount they pay if they take a loan from the bank. Unfortunately, they are using an eval function to calculate the loan. Bypass</p><a href="my_notes/2025/PicoCTF_2025-3v@l.html" class="entry-link">Read article <span aria-hidden="true">↗</span></a></div></article><article class="entry-card  reveal" data-search="squ1rrel ctf 2025 - go-getter write up ctf go-getter write up ans：squ1rrel{fake_flag} 進入網站看看。可以看到網頁中有兩個選項，一個可以查看 gopher，另一個則是直接去看 flag，這裡我選擇看看 gopher 的話，他會幹啥。可以發現就是隨..." data-category="CTF">
+<a class="entry-image" href="my_notes/2025/Squ1rrel_CTF_2025_Go-getter.html" aria-label="閱讀 Squ1rrel CTF 2025 - Go-getter write up"><img src="photo/Squ1rrel.png" alt="CTF 文章封面" loading="lazy"></a>
+<div class="entry-body"><div class="entry-meta"><span class="category-label">CTF</span><time datetime="2025-09-20">2025-09-20</time></div><h3><a href="my_notes/2025/Squ1rrel_CTF_2025_Go-getter.html">Squ1rrel CTF 2025 - Go-getter write up</a></h3><p class="entry-excerpt">go-getter write up Ans：squ1rrel{fake_flag} 進入網站看看。可以看到網頁中有兩個選項，一個可以查看 GOpher，另一個則是直接去看 flag，這裡我選擇看看 GOpher 的話，他會幹啥。可以發現就是隨...</p><a href="my_notes/2025/Squ1rrel_CTF_2025_Go-getter.html" class="entry-link">Read article <span aria-hidden="true">↗</span></a></div></article><article class="entry-card  reveal" data-search="hack the box web - trial by fire write up hack the box web trial by fire write up 首先先進入網站。這裡他會要我們輸入名字來開遊戲，所以我輸入個名字進去看看。所以我嘗試玩玩一場看看。結束後被導向到一個看起來就是一般的戰鬥結算數據的地方，看起來沒甚麼東西，所以我一樣去看原始碼。index.html 完整原始碼 這裡只是一般的介面設定，只不過在裡面有一段長這樣：in a land of burning rivers and searing heat, the fire drake stands guard over the emberstone. many have sought its power; none have prevailed.legends speak of ancient template scrolls—arcane writi" data-category="Hack The Box">
+<a class="entry-image" href="my_notes/2025/Hack_The_Box_Web-trial_by_fire_write%20up.html" aria-label="閱讀 Hack The Box Web - trial by fire write up"><img src="photo/HTB.png" alt="Hack The Box 文章封面" loading="lazy"></a>
+<div class="entry-body"><div class="entry-meta"><span class="category-label">Hack The Box</span><time datetime="2025-09-07">2025-09-07</time></div><h3><a href="my_notes/2025/Hack_The_Box_Web-trial_by_fire_write%20up.html">Hack The Box Web - trial by fire write up</a></h3><p class="entry-excerpt">web trial by fire write up 首先先進入網站。這裡他會要我們輸入名字來開遊戲，所以我輸入個名字進去看看。所以我嘗試玩玩一場看看。結束後被導向到一個看起來就是一般的戰鬥結算數據的地方，看起來沒甚麼東西，所以我一樣去看原始碼。index.html 完整原始碼 這裡只是一般的介面設定，只不過在裡面有一段長這樣：In a land of burning rivers and searing heat,</p><a href="my_notes/2025/Hack_The_Box_Web-trial_by_fire_write%20up.html" class="entry-link">Read article <span aria-hidden="true">↗</span></a></div></article><article class="entry-card  reveal" data-search="ais3 pre-exam - evil-calculator write up ais3 evil-calculator write up ans: ais3{fake_flag} 進來網站後，會看到一個像計算機的東西。這裡先隨意輸入 1+1，看他會做什麼事。可以發現在我們做計算時，會送出一個 post 請求，並且檔案是以 json 格式傳送，這裡我們..." data-category="AIS3">
+<a class="entry-image" href="my_notes/2025/evil-calculator_write_up.html" aria-label="閱讀 AIS3 pre-exam - evil-calculator write up"><img src="photo/AIS3.png" alt="AIS3 文章封面" loading="lazy"></a>
+<div class="entry-body"><div class="entry-meta"><span class="category-label">AIS3</span><time datetime="2025-08-15">2025-08-15</time></div><h3><a href="my_notes/2025/evil-calculator_write_up.html">AIS3 pre-exam - evil-calculator write up</a></h3><p class="entry-excerpt">evil-calculator write up Ans: AIS3{fake_flag} 進來網站後，會看到一個像計算機的東西。這裡先隨意輸入 1+1，看他會做什麼事。可以發現在我們做計算時，會送出一個 POST 請求，並且檔案是以 JSON 格式傳送，這裡我們...</p><a href="my_notes/2025/evil-calculator_write_up.html" class="entry-link">Read article <span aria-hidden="true">↗</span></a></div></article><article class="entry-card  reveal" data-search="acsc ctf 2024 - login! write up ctf login write up ans：acsc{fake} 這題進入頁面後，是一個 login 畫面。老方法一樣先猜 admin:admin。顯然他沒那麼笨，所以我先看看題目給的 source code。完整程式碼 在資料庫的地方他有兩筆資料，分別是 guest 跟 user，只是 user 的密碼是 32 字元長的隨機十六進位字串。const user_db = {user: {username: &#x27;user&#x27;, password: crypto.randombytes(32).tostring(&#x27;hex&#x27;)},guest: {username: &#x27;guest&#x27;,password: &#x27;guest&#x27;}}; 接著檢查 username 有沒有超過 6 個字元，不然就報錯。app.post(&#x27;/login&#x27;, (req, res) =&gt; {const" data-category="CTF">
+<a class="entry-image" href="my_notes/2025/ACSCCTF-Login_write_up.html" aria-label="閱讀 ACSC CTF 2024 - Login! write up"><img src="photo/ACSCCTF.png" alt="CTF 文章封面" loading="lazy"></a>
+<div class="entry-body"><div class="entry-meta"><span class="category-label">CTF</span><time datetime="2025-08-14">2025-08-14</time></div><h3><a href="my_notes/2025/ACSCCTF-Login_write_up.html">ACSC CTF 2024 - Login! write up</a></h3><p class="entry-excerpt">Login write up Ans：ACSC{fake} 這題進入頁面後，是一個 Login 畫面。老方法一樣先猜 admin:admin。顯然他沒那麼笨，所以我先看看題目給的 source code。完整程式碼 在資料庫的地方他有兩筆資料，分別是 guest 跟 user，只是 user 的密碼是 32 字元長的隨機十六進位字串。const USER_DB = {user: {username: &#x27;user&#x27;, </p><a href="my_notes/2025/ACSCCTF-Login_write_up.html" class="entry-link">Read article <span aria-hidden="true">↗</span></a></div></article><article class="entry-card  reveal" data-search="portswigger - file path traversal, simple case portswigger 一樣先進入網站隨便點幾個圖片看看在 http history 中會炸出什麼東西。發現在讀取網頁的時候，網頁中的檔案都會被存放在特定的路徑，所以我們丟到 repeater 中更改路徑。直接定位到題目的目標位置顯然是不行的，所以我嘗試使用目錄遍歷的方式來嘗試看看。透過以重複回到上一層的方式來執行，直到我們找到目標位置。最後這題就結束並完成 lab。" data-category="PortSwigger">
+<a class="entry-image" href="my_notes/2025/Portswigger-File_path_traversal_simple_case.html" aria-label="閱讀 Portswigger - File path traversal, simple case"><img src="photo/portswigger.jpg" alt="PortSwigger 文章封面" loading="lazy"></a>
+<div class="entry-body"><div class="entry-meta"><span class="category-label">PortSwigger</span><time datetime="2025-04-28">2025-04-28</time></div><h3><a href="my_notes/2025/Portswigger-File_path_traversal_simple_case.html">Portswigger - File path traversal, simple case</a></h3><p class="entry-excerpt">一樣先進入網站隨便點幾個圖片看看在 HTTP history 中會炸出什麼東西。發現在讀取網頁的時候，網頁中的檔案都會被存放在特定的路徑，所以我們丟到 Repeater 中更改路徑。直接定位到題目的目標位置顯然是不行的，所以我嘗試使用目錄遍歷的方式來嘗試看看。透過以重複回到上一層的方式來執行，直到我們找到目標位置。最後這題就結束並完成 LAB。</p><a href="my_notes/2025/Portswigger-File_path_traversal_simple_case.html" class="entry-link">Read article <span aria-hidden="true">↗</span></a></div></article><article class="entry-card  reveal" data-search="portswigger - traversal sequences blocked with absolute path bypass portswigger 一樣先進入網站隨便點幾個圖片看看在 http history 中會炸出什麼東西。這次跟上次一樣，我先透過 ../../ 的方式來進行攻擊，發現這次伺服器出現400的狀態碼，看來這次不是那麼地順利。不過即便如此，有時也可以透過絕對路徑來直接前往我們需要的目的地，所以我嘗試直接定位到目標位置並送出。結果就成功了，本題 lab 也就結束了。" data-category="PortSwigger">
+<a class="entry-image" href="my_notes/2025/Portswigger-traversal_sequences_blocked_with_absolute_path_bypass.html" aria-label="閱讀 Portswigger - traversal sequences blocked with absolute path bypass"><img src="photo/portswigger.jpg" alt="PortSwigger 文章封面" loading="lazy"></a>
+<div class="entry-body"><div class="entry-meta"><span class="category-label">PortSwigger</span><time datetime="2025-04-28">2025-04-28</time></div><h3><a href="my_notes/2025/Portswigger-traversal_sequences_blocked_with_absolute_path_bypass.html">Portswigger - traversal sequences blocked with absolute path bypass</a></h3><p class="entry-excerpt">一樣先進入網站隨便點幾個圖片看看在 HTTP history 中會炸出什麼東西。這次跟上次一樣，我先透過 ../../ 的方式來進行攻擊，發現這次伺服器出現400的狀態碼，看來這次不是那麼地順利。不過即便如此，有時也可以透過絕對路徑來直接前往我們需要的目的地，所以我嘗試直接定位到目標位置並送出。結果就成功了，本題 LAB 也就結束了。</p><a href="my_notes/2025/Portswigger-traversal_sequences_blocked_with_absolute_path_bypass.html" class="entry-link">Read article <span aria-hidden="true">↗</span></a></div></article></div><p class="no-results" id="no-results" hidden>找不到符合條件的筆記，再換個關鍵字看看。</p></section></main><footer class="site-footer"><div class="footer-inner">
+<div class="footer-left"><a class="footer-brand" href="index.html">XML<span>.</span></a><p>Just notes, experiments, and little things along the way.</p></div>
+<div class="footer-right"><div class="footer-links"><a href="https://github.com/Kkoebi" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.instagram.com/mio._816" target="_blank" rel="noopener noreferrer">Instagram</a><a href="mailto:alice0034927948@gmail.com">Email</a><a href="https://discord.com/users/mio._813" target="_blank" rel="noopener noreferrer">Discord</a></div><p>© 2026 XML's Blog · Made with curiosity.</p></div>
+</div></footer><button class="back-to-top" id="back-to-top" type="button" aria-label="回到頁面頂端">↑</button><div class="explosion-container" aria-hidden="true"></div><script src="js/index.js" defer></script></body></html>
